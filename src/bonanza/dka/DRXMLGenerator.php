@@ -4,8 +4,6 @@ class DRMetadataGenerator extends \ACHAOSMetadataGenerator {
 	const SCHEMA_NAME = 'DKA.DR';
 	const SCHEMA_GUID = '1221c2dd-3b23-4d27-97b3-ca7bf4720ecb';
 	
-	public static $singleton;
-	
 	/**
 	 * Generate XML from some import-specific object.
 	 * @param unknown_type $object

@@ -8,7 +8,6 @@ class BonanzaVideoExtractor extends \ACHAOSFileExtractor {
 	public $_CHAOSVideoLowFormatID;
 	public $_CHAOSVideoDestinationID;
 	
-	public static $singleton;
 	/**
 	 * Process the DFI movieitem.
 	 * @param CHAOS\Portal\Client\PortalClient $chaosClient The CHAOS client to use for the importing.

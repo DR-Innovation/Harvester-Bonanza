@@ -5,8 +5,6 @@ class DKA2MetadataGenerator extends DKAMetadataGenerator {
 	const SCHEMA_GUID = '5906a41b-feae-48db-bfb7-714b3e105396';
 	const BONANZA_SEARCH_URL = 'http://www.dr.dk/bonanza/search.htm?needle=%s&type=all&limit=120';
 	
-	public static $singleton;
-	
 	/**
 	 * Sets the schema source fetching it from a chaos system.
 	 * @param CHAOS\Portal\Client\PortalClient $chaosClient
