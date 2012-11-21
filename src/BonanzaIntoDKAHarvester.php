@@ -49,7 +49,7 @@ use bonanza\dka\DRXMLGenerator;
  * @link       https://github.com/CHAOS-Community/Harvester-Bonanza
  * @since      Class available since Release 0.1
  */
-class BonanzaIntoDKAHarvester extends ADKACHAOSHarvester {
+class BonanzaIntoDKAHarvester extends AChaosImporter {
 	
 	const VERSION = "0.1";
 	const BONANZA_ORGANIZATION_NAME = "Danmarks Radio";
@@ -66,6 +66,7 @@ class BonanzaIntoDKAHarvester extends ADKACHAOSHarvester {
 		$this->_CONFIGURATION_PARAMETERS["BONANZA_URL"] = "_bonanzaUrl";
 		$this->_CONFIGURATION_PARAMETERS["BONANZA_LOGIN"] = "_bonanzaLogin";
 		$this->_CONFIGURATION_PARAMETERS["BONANZA_PASSWORD"] = "_bonanzaPassword";
+		$this->_CONFIGURATION_PARAMETERS["CHAOS_DKA_OBJECT_TYPE_ID"] = "_objectTypeID";
 		$this->_CONFIGURATION_PARAMETERS["CHAOS_BONANZA_VIDEO_DESTINATION_ID"] = "_videoDestinationID";
 		$this->_CONFIGURATION_PARAMETERS["CHAOS_BONANZA_VIDEO_HIGH_FORMAT_ID"] = "_videoHighFormatID";
 		$this->_CONFIGURATION_PARAMETERS["CHAOS_BONANZA_VIDEO_MID_FORMAT_ID"] = "_videoMidFormatID";
@@ -93,6 +94,13 @@ class BonanzaIntoDKAHarvester extends ADKACHAOSHarvester {
 	 * @var string
 	 */
 	protected $_bonanzaPassword;
+	
+	/**
+	 * The object type of a chaos object, to be used later.
+	 * Populated when AChaosImporter::loadConfiguration is called.
+	 * @var string
+	 */
+	protected $_objectTypeID;
 	
 	protected $_videoDestinationID;
 	protected $_videoHighFormatID;
@@ -140,7 +148,7 @@ class BonanzaIntoDKAHarvester extends ADKACHAOSHarvester {
 		$objectTypeId = $this->_DKAObjectType->ID;
 	}
 	
-	protected function initializeExtras(&$extras) {
+	protected function initializeExtras($externalObject, &$extras) {
 		$extras = array();
 	}
 	
@@ -150,6 +158,14 @@ class BonanzaIntoDKAHarvester extends ADKACHAOSHarvester {
 	
 	protected function shouldBeSkipped($externalObject) {
 		return false;
+	}
+	
+	protected function generateChaosQuery($externalObject) {
+		return "";
+	}
+	
+	protected function getChaosObjectTypeID($externalObject) {
+		return $this->_;
 	}
 	
 	/**
