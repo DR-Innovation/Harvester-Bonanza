@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chc:ChaosHarvesterConfiguration xmlns:chc="http://www.example.org/ChaosHarvesterConfiguration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/ChaosHarvesterConfiguration ../../Base/schemas/ChaosHarvesterConfiguration.xsd ">
+  <chc:Organisation>Danmarks Radio</chc:Organisation>
+  <chc:Project>Bonanza</chc:Project>
+  <chc:Description>This harvester fetches movieclips from the service behind http://www.dr.dk/Bonanza/index.htm</chc:Description>
+  <chc:IncludePaths/>
+  <chc:ChaosConfiguration>
+	<chc:URL fromEnvironment="CHAOS_URL" />
+	<chc:Email fromEnvironment="CHAOS_EMAIL" />
+	<chc:Password fromEnvironment="CHAOS_PASSWORD" />
+  </chc:ChaosConfiguration>
+  <chc:Modes/>
+  <chc:Processors>
+    <chc:ObjectProcessor className="">
+      <chc:FolderId>chc:FolderId</chc:FolderId>
+      <chc:ObjectTypeId>chc:ObjectTypeId</chc:ObjectTypeId>
+      <chc:PublishSettings/>
+    </chc:ObjectProcessor>
+  </chc:Processors>
+</chc:ChaosHarvesterConfiguration>
