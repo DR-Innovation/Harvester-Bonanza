@@ -18,7 +18,7 @@ namespace bonanza;
 
 class BonanzaClient extends \SoapClient {
 	
-	const OPERATIO_GET_DATA = "BonanzaGetData";
+	const OPERATION_GET_DATA = "BonanzaGetData";
 	
 	/** @var string */
 	protected $_baseURL;
@@ -40,7 +40,7 @@ class BonanzaClient extends \SoapClient {
 	 * Checks if the DFI service is advailable, by sending a single row request for the movie.service.
 	 * @return boolean True if the service call goes through, false if not.
 	 */
-	public function isServiceAdvailable() {
+	public function sanityCheck() {
 		$response = $this->__getFunctions();
 		return (count($response) == 8);
 	}

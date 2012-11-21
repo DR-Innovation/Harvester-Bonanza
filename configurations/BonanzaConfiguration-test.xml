@@ -3,18 +3,48 @@
   <chc:Organisation>Danmarks Radio</chc:Organisation>
   <chc:Project>Bonanza</chc:Project>
   <chc:Description>This harvester fetches movieclips from the service behind http://www.dr.dk/Bonanza/index.htm</chc:Description>
-  <chc:IncludePaths/>
+  <chc:BasePath fromEnvironment="BASEPATH" />
+  <chc:IncludePaths>
+    <chc:path>Base/src</chc:path>
+    <chc:path>chaos-client/src</chc:path>
+    <chc:path>../../Timed-PHP/src</chc:path>
+    <chc:path>Bonanza/src</chc:path>
+  </chc:IncludePaths>
   <chc:ChaosConfiguration>
 	<chc:URL fromEnvironment="CHAOS_URL" />
 	<chc:Email fromEnvironment="CHAOS_EMAIL" />
 	<chc:Password fromEnvironment="CHAOS_PASSWORD" />
   </chc:ChaosConfiguration>
-  <chc:Modes/>
+  <chc:ExternalClient className="LoadableBonanzaClient" name="bonanza"
+  	namespace="CHAOS\Harvester\Bonanza">
+  	<chc:Parameter name="baseURL">http://www.dr.dk/tjenester/kulturarv/dataservice.asmx</chc:Parameter>
+  	<chc:Parameter name="username">kulturarv2012</chc:Parameter>
+  	<chc:Parameter name="password">23cb74dd-ff8e-4b43-9d7e-4cf27a5fab37</chc:Parameter>
+  </chc:ExternalClient>
+  <chc:Modes>
+  	<chc:Mode className="BasicAllMode"
+  		namespace="CHAOS\Harvester\Bonanza\Modes" name="all" />
+  	<chc:Mode className="ByStartdateMode"
+  		namespace="CHAOS\Harvester\Bonanza\Modes" name="by-startdate" />
+  </chc:Modes>
   <chc:Processors>
-    <chc:ObjectProcessor className="">
-      <chc:FolderId>chc:FolderId</chc:FolderId>
-      <chc:ObjectTypeId>chc:ObjectTypeId</chc:ObjectTypeId>
-      <chc:PublishSettings/>
+    <chc:ObjectProcessor className="AssetObjectProcessor"
+    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset">
+    	<chc:FolderId></chc:FolderId>
+    	<chc:ObjectTypeId></chc:ObjectTypeId>
+    	<chc:PublishSettings />
     </chc:ObjectProcessor>
+    <chc:MetadataProcessor className="XSLTMetadataProcessor"
+    	namespace="\CHAOS\Harvester\Processors" name="asset_metadata_dka">
+      <chc:Parameter name="stylesheet">Bonanza/stylesheets/DKA.xsl</chc:Parameter>
+   	  <chc:validate>false</chc:validate>
+   	  <chc:schemaGUID>00000000-0000-0000-0000-000063c30000</chc:schemaGUID>
+    </chc:MetadataProcessor>
+    <chc:MetadataProcessor className="XSLTMetadataProcessor"
+    	namespace="\CHAOS\Harvester\Processors" name="asset_metadata_dka2">
+      <chc:Parameter name="stylesheet">Bonanza/stylesheets/DKA2.xsl</chc:Parameter>
+   	  <chc:validate>true</chc:validate>
+   	  <chc:schemaGUID>5906a41b-feae-48db-bfb7-714b3e105396</chc:schemaGUID>
+    </chc:MetadataProcessor>
   </chc:Processors>
 </chc:ChaosHarvesterConfiguration>
