@@ -8,35 +8,31 @@
 	</xsl:template>
 
 	<xsl:template name="asset">
-		<DKA xmlns="http://www.danskkulturarv.dk/DKA2.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.danskkulturarv.dk/DKA2.xsd ../schemas/DKA2.xsd ">
+		<DKA xmlns="http://www.danskkulturarv.dk/DKA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.danskkulturarv.dk/DKA.xsd ../schemas/DKA.xsd ">
 			<Title><xsl:value-of select="Title"/></Title>
 			<Abstract />
 			<Description>
 				<xsl:value-of select="Description"/>
 			</Description>
 			<Organization>DR</Organization>
-			<ExternalURL>http://www.dr.dk/bonanza/search.htm?needle=<xsl:value-of select="Title"/></ExternalURL>
-			<ExternalIdentifier><xsl:value-of select="AssetId"/></ExternalIdentifier>
 			<Type><xsl:value-of select="AssetType"/></Type>
 			<CreatedDate><xsl:value-of select="Created"/></CreatedDate>
 			<FirstPublishedDate><xsl:value-of select="FirstPublished"/></FirstPublishedDate>
-			<xsl:copy-of select="php:function('\CHAOS\Harvester\Bonanza\Processors\AssetXSLTMetadataProcessor::xslt_contributors_2', string(Actors))" />
-			<xsl:copy-of select="php:function('\CHAOS\Harvester\Bonanza\Processors\AssetXSLTMetadataProcessor::xslt_creators_2', string(Colophon))" />
+			<Identifier><xsl:value-of select="AssetId"/></Identifier>
+			<xsl:copy-of select="php:function('\CHAOS\Harvester\Bonanza\Processors\AssetXSLTMetadataProcessor::xslt_contributors', string(Actors))" />
+			<xsl:copy-of select="php:function('\CHAOS\Harvester\Bonanza\Processors\AssetXSLTMetadataProcessor::xslt_creators', string(Colophon))" />
+			<TechnicalComment />
+			<Location />
 			<RightsDescription>Copyright © Danmarks Radio</RightsDescription>
+			<GeoData><Latitude /><Longitude /></GeoData>
 			<Categories>
 				<Category><xsl:value-of select="CategoryTitle" /></Category>
 			</Categories>
 			<Tags>
 				<Tag><xsl:value-of select="CategoryTitle" /></Tag>
 			</Tags>
-			<Metafield>
-				<Key>ProductionId</Key>
-				<Value><xsl:value-of select="ProductionId"/></Value>
-			</Metafield>
-			<Metafield>
-				<Key>Duration</Key>
-				<Value><xsl:value-of select="Duration"/></Value>
-			</Metafield>
+			<ProductionID><xsl:value-of select="ProductionId"/></ProductionID>
+			<StreamDuration><xsl:value-of select="Duration"/></StreamDuration>
 		</DKA>
 	</xsl:template>
 </xsl:stylesheet>

@@ -30,21 +30,61 @@
   <chc:Processors>
     <chc:ObjectProcessor className="AssetObjectProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset">
-    	<chc:FolderId></chc:FolderId>
-    	<chc:ObjectTypeId></chc:ObjectTypeId>
-    	<chc:PublishSettings />
+    	<chc:FolderId>2</chc:FolderId>
+    	<chc:ObjectTypeId>36</chc:ObjectTypeId>
+		<chc:PublishSettings>
+			<chc:PublishAccesspoint>
+				30000000-0000-0000-0000-000000000000
+			</chc:PublishAccesspoint>
+			<chc:UnpublishAccesspoint>
+				30000000-0000-0000-0000-000000000000
+			</chc:UnpublishAccesspoint>
+		</chc:PublishSettings>
     </chc:ObjectProcessor>
-    <chc:MetadataProcessor className="XSLTMetadataProcessor"
-    	namespace="\CHAOS\Harvester\Processors" name="asset_metadata_dka">
+    <chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
+    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_metadata_dka">
       <chc:Parameter name="stylesheet">Bonanza/stylesheets/DKA.xsl</chc:Parameter>
    	  <chc:validate>false</chc:validate>
    	  <chc:schemaGUID>00000000-0000-0000-0000-000063c30000</chc:schemaGUID>
     </chc:MetadataProcessor>
-    <chc:MetadataProcessor className="XSLTMetadataProcessor"
-    	namespace="\CHAOS\Harvester\Processors" name="asset_metadata_dka2">
+    <chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
+    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_metadata_dka2">
       <chc:Parameter name="stylesheet">Bonanza/stylesheets/DKA2.xsl</chc:Parameter>
    	  <chc:validate>true</chc:validate>
    	  <chc:schemaGUID>5906a41b-feae-48db-bfb7-714b3e105396</chc:schemaGUID>
     </chc:MetadataProcessor>
+    <chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
+    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_metadata_dka_dr">
+      <chc:Parameter name="stylesheet">Bonanza/stylesheets/DKA.DR.xsl</chc:Parameter>
+   	  <chc:validate>true</chc:validate>
+   	  <chc:schemaGUID>1221c2dd-3b23-4d27-97b3-ca7bf4720ecb</chc:schemaGUID>
+   	  <chc:schemaLocation>Bonanza/schemas/DKA.xsd</chc:schemaLocation>
+    </chc:MetadataProcessor>
+    <chc:FileProcessor className="AssetFileProcessor"
+    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_thumb">
+      <chc:Parameter name="AssetFileType">Thumb</chc:Parameter>
+      <chc:FormatId>1</chc:FormatId>
+      <chc:DestinationId>-1</chc:DestinationId>
+    </chc:FileProcessor>
+    <chc:FileProcessor className="AssetFileProcessor"
+    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_high">
+      <chc:Parameter name="AssetFileType">VideoHigh</chc:Parameter>
+      <chc:FormatId>2</chc:FormatId>
+      <chc:DestinationId>-1</chc:DestinationId>
+    </chc:FileProcessor>
+    <chc:FileProcessor className="AssetFileProcessor"
+    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_mid">
+      <chc:Parameter name="AssetFileType">VideoMid</chc:Parameter>
+      <chc:Parameter name="DerivedFromFormatId">2</chc:Parameter>
+      <chc:FormatId>3</chc:FormatId>
+      <chc:DestinationId>-1</chc:DestinationId>
+    </chc:FileProcessor>
+    <chc:FileProcessor className="AssetFileProcessor"
+    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_low">
+      <chc:Parameter name="AssetFileType">VideoLow</chc:Parameter>
+      <chc:Parameter name="DerivedFromFormatId">3</chc:Parameter>
+      <chc:FormatId>4</chc:FormatId>
+      <chc:DestinationId>-1</chc:DestinationId>
+    </chc:FileProcessor>
   </chc:Processors>
 </chc:ChaosHarvesterConfiguration>
