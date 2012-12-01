@@ -63,28 +63,28 @@
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_thumb">
       <chc:Parameter name="AssetFileType">Thumb</chc:Parameter>
-      <chc:FormatId>1</chc:FormatId>
-      <chc:DestinationId>-1</chc:DestinationId>
+      <chc:FormatId>3</chc:FormatId>
+      <chc:DestinationId>24</chc:DestinationId>
     </chc:FileProcessor>
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_high">
       <chc:Parameter name="AssetFileType">VideoHigh</chc:Parameter>
-      <chc:FormatId>2</chc:FormatId>
-      <chc:DestinationId>-1</chc:DestinationId>
+      <chc:FormatId>1</chc:FormatId>
+      <chc:DestinationId>25</chc:DestinationId>
     </chc:FileProcessor>
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_mid">
       <chc:Parameter name="AssetFileType">VideoMid</chc:Parameter>
-      <chc:Parameter name="DerivedFromFormatId">2</chc:Parameter>
-      <chc:FormatId>3</chc:FormatId>
-      <chc:DestinationId>-1</chc:DestinationId>
+      <!-- chc:Parameter name="DerivedFromFormatId">1</chc:Parameter -->
+      <chc:FormatId>1</chc:FormatId>
+      <chc:DestinationId>25</chc:DestinationId>
     </chc:FileProcessor>
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_low">
       <chc:Parameter name="AssetFileType">VideoLow</chc:Parameter>
-      <chc:Parameter name="DerivedFromFormatId">3</chc:Parameter>
-      <chc:FormatId>4</chc:FormatId>
-      <chc:DestinationId>-1</chc:DestinationId>
+      <!-- chc:Parameter name="DerivedFromFormatId">1</chc:Parameter -->
+      <chc:FormatId>1</chc:FormatId>
+      <chc:DestinationId>25</chc:DestinationId>
     </chc:FileProcessor>
   </chc:Processors>
 </chc:ChaosHarvesterConfiguration>

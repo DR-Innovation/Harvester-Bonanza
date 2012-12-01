@@ -22,7 +22,7 @@
 			<FirstPublishedDate><xsl:value-of select="FirstPublished"/></FirstPublishedDate>
 			<xsl:copy-of select="php:function('\CHAOS\Harvester\Bonanza\Processors\AssetXSLTMetadataProcessor::xslt_contributors_2', string(Actors))" />
 			<xsl:copy-of select="php:function('\CHAOS\Harvester\Bonanza\Processors\AssetXSLTMetadataProcessor::xslt_creators_2', string(Colophon))" />
-			<RightsDescription>Copyright © Danmarks Radio</RightsDescription>
+			<RightsDescription>Copyright © DR</RightsDescription>
 			<Categories>
 				<Category><xsl:value-of select="CategoryTitle" /></Category>
 			</Categories>

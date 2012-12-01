@@ -19,11 +19,11 @@
 			<CreatedDate><xsl:value-of select="Created"/></CreatedDate>
 			<FirstPublishedDate><xsl:value-of select="FirstPublished"/></FirstPublishedDate>
 			<Identifier><xsl:value-of select="AssetId"/></Identifier>
-			<xsl:copy-of select="php:function('\CHAOS\Harvester\Bonanza\Processors\AssetXSLTMetadataProcessor::xslt_contributors', string(Actors))" />
+			<xsl:copy-of select="php:function('\CHAOS\Harvester\Bonanza\Processors\AssetXSLTMetadataProcessor::xslt_contributors', string(Actors))"  />
 			<xsl:copy-of select="php:function('\CHAOS\Harvester\Bonanza\Processors\AssetXSLTMetadataProcessor::xslt_creators', string(Colophon))" />
 			<TechnicalComment />
 			<Location />
-			<RightsDescription>Copyright © Danmarks Radio</RightsDescription>
+			<RightsDescription>Copyright © DR</RightsDescription>
 			<GeoData><Latitude /><Longitude /></GeoData>
 			<Categories>
 				<Category><xsl:value-of select="CategoryTitle" /></Category>

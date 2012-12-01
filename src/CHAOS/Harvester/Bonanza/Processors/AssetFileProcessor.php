@@ -7,13 +7,14 @@ class AssetFileProcessor extends \CHAOS\Harvester\Processors\FileProcessor {
 	
 	protected $_AssetFileType;
 	protected $_DerivedFromFormatId;
+	protected $_name;
 	
-	const THUMB_URL_BASE = "http://downol.dr.dk/download/";
+	const THUMB_AND_AUDIO_URL_BASE = "http://downol.dr.dk/download/";
 	const VIDEO_URL_BASE = "rtmp://vod-bonanza.gss.dr.dk/bonanza/";
 	
 	public function __construct($harvester, $name, $parameters) {
 		parent::__construct($harvester, $name, $parameters);
-		printf("AssetFileProcessor constructed ..");
+		$this->_name = $name;
 		$this->_AssetFileType = $parameters['AssetFileType'];
 		if(array_key_exists('DerivedFromFormatId', $parameters)) {
 			$this->_DerivedFromFormatId = intval($parameters['DerivedFromFormatId']);
@@ -29,7 +30,8 @@ class AssetFileProcessor extends \CHAOS\Harvester\Processors\FileProcessor {
 		
 		switch($this->_AssetFileType) {
 			case 'Thumb':
-				$urlBase = self::THUMB_URL_BASE;
+			case 'Audio':
+				$urlBase = self::THUMB_AND_AUDIO_URL_BASE;
 				break;
 			case 'VideoHigh':
 			case 'VideoMid':
@@ -47,17 +49,19 @@ class AssetFileProcessor extends \CHAOS\Harvester\Processors\FileProcessor {
 					$fileShadow = $this->createFileShadow($pathinfo['dirname'], $pathinfo['basename']);
 					
 					// Fixing the derived file types.
-					if($this->_DerivedFromFormatId !== null) {
+					if($this->_DerivedFromFormatId !== null && $fileShadow->parentFileShadow == null) {
 						foreach($shadow->fileShadows as $anotherFileShadow) {
 							/* @var $anotherFileShadow FileShadow */
 							if($anotherFileShadow->formatID === $this->_DerivedFromFormatId) {
 								if($fileShadow->parentFileShadow == null) {
 									$fileShadow->parentFileShadow = $anotherFileShadow;
 								} else {
-									throw new \RuntimeException("Couldn't set the parent file shadow using the DerivedFromFormatId, because the parent was already sat.");
+									$this->_harvester->info("[AssetFileProcessor:%s] It was possible to select more than one file as parent with DerivedFromFormatId = %u.", $this->_name, $this->_DerivedFromFormatId);
 								}
 							}
 						}
+					} elseif ($this->_DerivedFromFormatId !== null && $fileShadow->parentFileShadow != null) {
+						throw new \RuntimeException("Couldn't set the parent file shadow using the DerivedFromFormatId, because the parent was already sat.");
 					}
 					
 					$shadow->fileShadows[] = $fileShadow;
