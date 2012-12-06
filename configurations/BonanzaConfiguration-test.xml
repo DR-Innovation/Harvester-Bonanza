@@ -30,7 +30,7 @@
   <chc:Processors>
     <chc:ObjectProcessor className="AssetObjectProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset">
-    	<chc:FolderId>2</chc:FolderId>
+    	<chc:FolderId>252</chc:FolderId>
     	<chc:ObjectTypeId>36</chc:ObjectTypeId>
 		<chc:PublishSettings>
 			<chc:PublishAccesspoint>
@@ -58,7 +58,7 @@
       <chc:Parameter name="stylesheet">Bonanza/stylesheets/DKA.DR.xsl</chc:Parameter>
    	  <chc:validate>true</chc:validate>
    	  <chc:schemaGUID>1221c2dd-3b23-4d27-97b3-ca7bf4720ecb</chc:schemaGUID>
-   	  <chc:schemaLocation>Bonanza/schemas/DKA.xsd</chc:schemaLocation>
+   	  <chc:schemaLocation>/home/creen/Projects/DR/schemas/DKA.DR.xsd</chc:schemaLocation>
     </chc:MetadataProcessor>
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_thumb">
@@ -75,16 +75,20 @@
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_mid">
       <chc:Parameter name="AssetFileType">VideoMid</chc:Parameter>
-      <!-- chc:Parameter name="DerivedFromFormatId">1</chc:Parameter -->
       <chc:FormatId>1</chc:FormatId>
       <chc:DestinationId>25</chc:DestinationId>
     </chc:FileProcessor>
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_low">
       <chc:Parameter name="AssetFileType">VideoLow</chc:Parameter>
-      <!-- chc:Parameter name="DerivedFromFormatId">1</chc:Parameter -->
       <chc:FormatId>1</chc:FormatId>
       <chc:DestinationId>25</chc:DestinationId>
+    </chc:FileProcessor>
+    <chc:FileProcessor className="AssetFileProcessor"
+    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_audio">
+      <chc:Parameter name="AssetFileType">Audio</chc:Parameter>
+      <chc:FormatId>2</chc:FormatId>
+      <chc:DestinationId>24</chc:DestinationId>
     </chc:FileProcessor>
   </chc:Processors>
 </chc:ChaosHarvesterConfiguration>

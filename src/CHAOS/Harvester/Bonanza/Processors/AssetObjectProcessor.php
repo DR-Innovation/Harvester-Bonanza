@@ -36,9 +36,7 @@ class AssetObjectProcessor extends \CHAOS\Harvester\Processors\ObjectProcessor i
 		$shadow = $this->_harvester->process('asset_file_video_high', $externalObject, $shadow);
 		$shadow = $this->_harvester->process('asset_file_video_mid', $externalObject, $shadow);
 		$shadow = $this->_harvester->process('asset_file_video_low', $externalObject, $shadow);
-		
-		var_dump($shadow);
-		exit;
+		$shadow = $this->_harvester->process('asset_file_audio', $externalObject, $shadow);
 		
 		$shadow->commit($this->_harvester);
 		
