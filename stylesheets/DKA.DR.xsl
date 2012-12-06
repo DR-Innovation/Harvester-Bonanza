@@ -8,7 +8,7 @@
 	</xsl:template>
 
 	<xsl:template name="asset">
-		<DR xmlns="http://www.danskkulturarv.dk/DKA.DR.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.danskkulturarv.dk/DKA.DR.xsd ../schemas/DKA.DR.xsd ">
+		<DR xmlns="http://www.danskkulturarv.dk/DKA.DR.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.danskkulturarv.dk/DKA.DR.xsd ../../../schemas/DKA.DR.xsd ">
 			<ProductionID><xsl:value-of select="ProductionId"/></ProductionID>
 			<StreamDuration><xsl:value-of select="Duration"/></StreamDuration>
 		</DR>
