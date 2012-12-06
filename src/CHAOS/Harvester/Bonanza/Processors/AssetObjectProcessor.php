@@ -3,12 +3,7 @@ namespace CHAOS\Harvester\Bonanza\Processors;
 use CHAOS\Harvester\Shadows\ObjectShadow;
 use CHAOS\Harvester\Shadows\SkippedObjectShadow;
 
-class AssetObjectProcessor extends \CHAOS\Harvester\Processors\ObjectProcessor implements \CHAOS\Harvester\Loadable {
-	
-	public function __construct($harvester, $name, $parameter = null) {
-		$this->_harvester = $harvester;
-		$this->_harvester->debug("A ".__CLASS__." named '$name' was constructing.");
-	}
+class AssetObjectProcessor extends \CHAOS\Harvester\Processors\ObjectProcessor {
 	
 	protected function generateQuery($externalObject) {
 		$legacyQuery = sprintf('(DKA-Organization:"%s" AND ObjectTypeID:%u AND m00000000-0000-0000-0000-000063c30000_da_all:"%s")', 'DR', $this->_objectTypeId, strval($externalObject->AssetId));

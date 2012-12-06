@@ -7,14 +7,12 @@ class AssetFileProcessor extends \CHAOS\Harvester\Processors\FileProcessor {
 	
 	protected $_AssetFileType;
 	protected $_DerivedFromFormatId;
-	protected $_name;
 	
 	const THUMB_AND_AUDIO_URL_BASE = "http://downol.dr.dk/download/";
 	const VIDEO_URL_BASE = "rtmp://vod-bonanza.gss.dr.dk/bonanza/";
 	
 	public function __construct($harvester, $name, $parameters) {
 		parent::__construct($harvester, $name, $parameters);
-		$this->_name = $name;
 		$this->_AssetFileType = $parameters['AssetFileType'];
 		if(array_key_exists('DerivedFromFormatId', $parameters)) {
 			$this->_DerivedFromFormatId = intval($parameters['DerivedFromFormatId']);

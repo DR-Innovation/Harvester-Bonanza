@@ -2,11 +2,6 @@
 namespace CHAOS\Harvester\Bonanza\Modes;
 class ByStartdateMode extends \CHAOS\Harvester\Modes\SetByReferenceMode implements \CHAOS\Harvester\Loadable {
 	
-	public function __construct($harvester, $name, $parameters = null) {
-		$this->_harvester = $harvester;
-		$this->_harvester->debug("A ".__CLASS__." named '$name' was constructing.");
-	}
-	
 	/**
 	 * The $reference is here a string in the ISO 8601 date format.
 	 * (non-PHPdoc)
