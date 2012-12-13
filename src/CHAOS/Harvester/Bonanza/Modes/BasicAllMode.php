@@ -12,9 +12,11 @@ class BasicAllMode extends \CHAOS\Harvester\Modes\AllMode implements \CHAOS\Harv
 		$m = 1;
 		
 		$this->_harvester->info("Fetching references to all movieclips.");
-		$movieclips = $bonanza->GetEverything();
+		$assets = $bonanza->GetEverything();
+		$this->_harvester->info("Found %u movieclips.", count($assets));
+		
 		foreach($assets as $asset) {
-			printf("[#%u] ", $m++);
+			printf("[#%u/%u] ", $m++, count($assets));
 			$assetShadow = null;
 			try {
 				$assetShadow = $this->_harvester->process('asset', $asset);

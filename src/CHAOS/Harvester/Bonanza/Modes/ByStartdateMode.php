@@ -19,16 +19,16 @@ class ByStartdateMode extends \CHAOS\Harvester\Modes\SetByReferenceMode implemen
 		$m = 1;
 		
 		$this->_harvester->info("Fetching references to all movieclips changed since %s.", date("r", $reference));
-		$movieclips = $bonanza->GetDataByStartdate(date("c", $reference));
-		$this->_harvester->info("Found %u movieclips.", count($movieclips));
+		$assets = $bonanza->GetDataByStartdate(date("c", $reference));
+		$this->_harvester->info("Found %u movieclips.", count($assets));
 		
-		foreach($movieclips as $movieclip) {
-			printf("[#%u] ", $m++);
-			$movieclipShadow = null;
+		foreach($assets as $asset) {
+			printf("[#%u/%u] ", $m++, count($assets));
+			$assetShadow = null;
 			try {
-				$movieclipShadow = $this->_harvester->process('asset', $movieclip);
+				$assetShadow = $this->_harvester->process('asset', $asset);
 			} catch(\Exception $e) {
-				$this->_harvester->registerProcessingException($e, $movieclip, $movieclipShadow);
+				$this->_harvester->registerProcessingException($e, $asset, $assetShadow);
 			}
 			print("\n");
 		}
