@@ -52,6 +52,7 @@
       <chc:Parameter name="stylesheet">Bonanza/stylesheets/DKA2.xsl</chc:Parameter>
    	  <chc:validate>true</chc:validate>
    	  <chc:schemaGUID>5906a41b-feae-48db-bfb7-714b3e105396</chc:schemaGUID>
+   	  <chc:schemaLocation>Bonanza/schemas/DKA2.xsd</chc:schemaLocation>
     </chc:MetadataProcessor>
     <chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_metadata_dka_dr">
