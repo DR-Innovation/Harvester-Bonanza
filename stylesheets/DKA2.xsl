@@ -13,6 +13,18 @@
 			<Abstract />
 			<Description>
 				<xsl:value-of select="Description"/>
+				<xsl:variable name="actors_for_description" select="php:function('\CHAOS\Harvester\Bonanza\Processors\AssetXSLTMetadataProcessor::xslt_actors_for_description', string(Actors))" />
+				<xsl:if test="$actors_for_description != ''">
+					<p xmlns="http://www.w3.org/1999/xhtml" class="actors">
+					<xsl:value-of select="$actors_for_description" />
+					</p>
+				</xsl:if>
+				<xsl:variable name="colophon_for_description" select="php:function('\CHAOS\Harvester\Bonanza\Processors\AssetXSLTMetadataProcessor::xslt_colophon_for_description', string(Colophon))" />
+				<xsl:if test="$colophon_for_description != ''">
+					<p xmlns="http://www.w3.org/1999/xhtml" class="colophon">
+					<xsl:value-of select="$colophon_for_description" />
+					</p>
+				</xsl:if>
 			</Description>
 			<Organization>DR</Organization>
 			<ExternalURL>http://www.dr.dk/bonanza/search.htm?needle=<xsl:value-of select="Title"/></ExternalURL>
