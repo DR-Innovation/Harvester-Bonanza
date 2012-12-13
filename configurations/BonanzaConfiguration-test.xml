@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<chc:ChaosHarvesterConfiguration xmlns:chc="http://www.example.org/ChaosHarvesterConfiguration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/ChaosHarvesterConfiguration ../../../schemas/ChaosHarvesterConfiguration.xsd ">
+<chc:ChaosHarvesterConfiguration xmlns:chc="http://www.example.org/ChaosHarvesterConfiguration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/ChaosHarvesterConfiguration ../../Base/schemas/ChaosHarvesterConfiguration.xsd ">
   <chc:Organisation>Danmarks Radio</chc:Organisation>
   <chc:Project>Bonanza</chc:Project>
   <chc:Description>This harvester fetches movieclips from the service behind http://www.dr.dk/Bonanza/index.htm</chc:Description>
@@ -52,14 +52,14 @@
       <chc:Parameter name="stylesheet">Bonanza/stylesheets/DKA2.xsl</chc:Parameter>
    	  <chc:validate>true</chc:validate>
    	  <chc:schemaGUID>5906a41b-feae-48db-bfb7-714b3e105396</chc:schemaGUID>
-   	  <chc:schemaLocation>Bonanza/schemas/DKA2.xsd</chc:schemaLocation>
+   	  <chc:schemaLocation>Base/schemas/DKA2.xsd</chc:schemaLocation>
     </chc:MetadataProcessor>
     <chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_metadata_dka_dr">
       <chc:Parameter name="stylesheet">Bonanza/stylesheets/DKA.DR.xsl</chc:Parameter>
    	  <chc:validate>true</chc:validate>
    	  <chc:schemaGUID>1221c2dd-3b23-4d27-97b3-ca7bf4720ecb</chc:schemaGUID>
-   	  <chc:schemaLocation>/home/creen/Projects/DR/schemas/DKA.DR.xsd</chc:schemaLocation>
+   	  <chc:schemaLocation>Base/schemas/DKA.DR.xsd</chc:schemaLocation>
     </chc:MetadataProcessor>
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_thumb">

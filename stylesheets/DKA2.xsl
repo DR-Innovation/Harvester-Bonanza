@@ -8,7 +8,7 @@
 	</xsl:template>
 
 	<xsl:template name="asset">
-		<DKA xmlns="http://www.danskkulturarv.dk/DKA2.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.danskkulturarv.dk/DKA2.xsd ../../../schemas/DKA2.xsd ">
+		<DKA xmlns="http://www.danskkulturarv.dk/DKA2.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.danskkulturarv.dk/DKA2.xsd ../../Base/schemas/DKA2.xsd ">
 			<Title><xsl:value-of select="Title"/></Title>
 			<Abstract />
 			<Description>
