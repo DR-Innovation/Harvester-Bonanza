@@ -30,6 +30,13 @@
   <chc:Processors>
     <chc:ObjectProcessor className="AssetObjectProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset">
+		<chc:Filters>
+			<chc:EmbeddedFilter language="PHP">
+			if(strlen(trim($externalObject->ProductionId)) !== 11) {
+				return "The ProductionId is not a 11 character number.";
+			}
+			</chc:EmbeddedFilter>
+		</chc:Filters>
     	<chc:FolderId>252</chc:FolderId>
     	<chc:ObjectTypeId>36</chc:ObjectTypeId>
 		<chc:PublishSettings>
