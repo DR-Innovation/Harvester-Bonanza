@@ -30,6 +30,7 @@ class LoadableBonanzaClient extends \bonanza\BonanzaClient implements \CHAOS\Har
 	 */
 	public function __construct($harvester, $name, $parameters = array()) {
 		parent::__construct($parameters['baseURL'], $parameters['username'], $parameters['password']);
+		$this->harvester = $harvester;
 	}
 	
 	/**
