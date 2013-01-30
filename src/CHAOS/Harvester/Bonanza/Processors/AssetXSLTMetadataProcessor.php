@@ -7,6 +7,7 @@ class AssetXSLTMetadataProcessor extends XSLTMetadataProcessor {
 	
 	const ACTORS_PATTERN = '/(?P<Name>.*?), ?(?P<Role>.*?); ?/';
 	const COLOPHON_PATTERN = '/(?P<Role>.*?): ?(?P<Name>.*?)\. ?/';
+	const SUBJECT_PATTERN = '/([^;]*); ?/';
 	
 	public static function xslt_contributors ($actors) {
 		return XSLTMetadataProcessor::preg_explode_to_xml($actors, self::ACTORS_PATTERN, 'Contributor', 'Person', 'http://www.danskkulturarv.dk/DKA.xsd', true);
@@ -22,6 +23,10 @@ class AssetXSLTMetadataProcessor extends XSLTMetadataProcessor {
 	
 	public static function xslt_creators_2 ($colophon) {
 		return XSLTMetadataProcessor::preg_explode_to_xml($colophon, self::COLOPHON_PATTERN, 'Creators', 'Creator', 'http://www.danskkulturarv.dk/DKA2.xsd', true);
+	}
+	
+	public static function xslt_subject_to_tags ($tags) {
+		return XSLTMetadataProcessor::preg_explode_to_xml($tags, self::SUBJECT_PATTERN, 'Tags', 'Tag', 'http://www.danskkulturarv.dk/DKA2.xsd', true, true);
 	}
 	
 	public static function xslt_actors_for_description($actors) {

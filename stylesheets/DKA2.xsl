@@ -38,9 +38,7 @@
 			<Categories>
 				<Category><xsl:value-of select="CategoryTitle" /></Category>
 			</Categories>
-			<Tags>
-				<Tag><xsl:value-of select="CategoryTitle" /></Tag>
-			</Tags>
+			<xsl:copy-of select="php:function('\CHAOS\Harvester\Bonanza\Processors\AssetXSLTMetadataProcessor::xslt_subject_to_tags', string(Subject))" />
 			<Metafield>
 				<Key>ProductionId</Key>
 				<Value><xsl:value-of select="ProductionId"/></Value>
