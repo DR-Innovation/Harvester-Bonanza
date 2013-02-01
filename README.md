@@ -4,13 +4,14 @@ Harvester-Bonanza
 This harvester connects to the open API of the Danish Film Institute and copies information on movies into a CHAOS service.
 
 ##Instructions
-To be updated...
+To be updated, the first time anyone hints this might be desired, I will take the time to write a good guide.
 
 ##Requirements
 * The CHAOS Client for PHP must be cloned from https://github.com/CHAOS-Community/CHAOS.Portal.Client-PHP into some local folder.
 * PHP 5.3.5+ is required.
 * The CURL plugin must be enabled in PHP.
 * The iconv plugun must be enables in PHP (it is by default).
+* The Harvester-Base project from CHAOS-Community https://github.com/CHAOS-Community/Harvester-Base/ as well as that projects requirements.
 
 ##License  
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
