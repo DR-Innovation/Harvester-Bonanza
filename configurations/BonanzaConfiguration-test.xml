@@ -72,31 +72,46 @@
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_thumb">
       <chc:Parameter name="AssetFileType">Thumb</chc:Parameter>
       <chc:FormatId>3</chc:FormatId>
-      <chc:DestinationId>24</chc:DestinationId>
+      <chc:Destination name="default">
+        <chc:baseURL>http://downol.dr.dk/download/</chc:baseURL>
+        <chc:id>24</chc:id>
+      </chc:Destination>
     </chc:FileProcessor>
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_high">
       <chc:Parameter name="AssetFileType">VideoHigh</chc:Parameter>
       <chc:FormatId>1</chc:FormatId>
-      <chc:DestinationId>25</chc:DestinationId>
+      <chc:Destination name="default">
+        <chc:baseURL>rtmp://vod-bonanza.gss.dr.dk/bonanza/</chc:baseURL>
+        <chc:id>25</chc:id>
+      </chc:Destination>
     </chc:FileProcessor>
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_mid">
       <chc:Parameter name="AssetFileType">VideoMid</chc:Parameter>
       <chc:FormatId>1</chc:FormatId>
-      <chc:DestinationId>25</chc:DestinationId>
+      <chc:Destination name="default">
+        <chc:baseURL>rtmp://vod-bonanza.gss.dr.dk/bonanza/</chc:baseURL>
+        <chc:id>25</chc:id>
+      </chc:Destination>
     </chc:FileProcessor>
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_low">
       <chc:Parameter name="AssetFileType">VideoLow</chc:Parameter>
       <chc:FormatId>1</chc:FormatId>
-      <chc:DestinationId>25</chc:DestinationId>
+      <chc:Destination name="default">
+        <chc:baseURL>rtmp://vod-bonanza.gss.dr.dk/bonanza/</chc:baseURL>
+        <chc:id>25</chc:id>
+      </chc:Destination>
     </chc:FileProcessor>
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_audio">
       <chc:Parameter name="AssetFileType">Audio</chc:Parameter>
       <chc:FormatId>2</chc:FormatId>
-      <chc:DestinationId>24</chc:DestinationId>
+      <chc:Destination name="default">
+        <chc:baseURL>http://downol.dr.dk/download/</chc:baseURL>
+        <chc:id>24</chc:id>
+      </chc:Destination>
     </chc:FileProcessor>
   </chc:Processors>
 </chc:ChaosHarvesterConfiguration>

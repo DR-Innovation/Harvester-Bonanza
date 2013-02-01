@@ -8,8 +8,8 @@ class AssetFileProcessor extends \CHAOS\Harvester\Processors\FileProcessor {
 	protected $_AssetFileType;
 	protected $_DerivedFromFormatId;
 	
-	const THUMB_AND_AUDIO_URL_BASE = "http://downol.dr.dk/download/";
-	const VIDEO_URL_BASE = "rtmp://vod-bonanza.gss.dr.dk/bonanza/";
+	//const THUMB_AND_AUDIO_URL_BASE = "http://downol.dr.dk/download/";
+	//const VIDEO_URL_BASE = "rtmp://vod-bonanza.gss.dr.dk/bonanza/";
 	
 	public function __construct($harvester, $name, $parameters) {
 		parent::__construct($harvester, $name, $parameters);
@@ -26,15 +26,13 @@ class AssetFileProcessor extends \CHAOS\Harvester\Processors\FileProcessor {
 			throw new \RuntimeException("The shadow has to be an initialized ObjectShadow.");
 		}
 		
+		// Check for asset file type.
 		switch($this->_AssetFileType) {
 			case 'Thumb':
 			case 'Audio':
-				$urlBase = self::THUMB_AND_AUDIO_URL_BASE;
-				break;
 			case 'VideoHigh':
 			case 'VideoMid':
 			case 'VideoLow':
-				$urlBase = self::VIDEO_URL_BASE;
 				break;
 			default:
 				throw new \RuntimeException("Unexpected base url of an asset file type: {$this->_AssetFileType}");
@@ -42,10 +40,9 @@ class AssetFileProcessor extends \CHAOS\Harvester\Processors\FileProcessor {
 		
 		foreach($externalObject->AssetFiles->AssetFile as $file) {
 			if($file->AssetFileType == $this->_AssetFileType) {
-				if(preg_match("#$urlBase(.*)#", $file->Location, $filenameMatches) === 1) {
-					$pathinfo = pathinfo($filenameMatches[1]);
-					$fileShadow = $this->createFileShadow($pathinfo['dirname'], $pathinfo['basename']);
-					
+				// This filter instance is ment for this particular asset file type.
+				$fileShadow = $this->createFileShadowFromURL($file->Location);
+				if($fileShadow) {
 					// Fixing the derived file types.
 					if($this->_DerivedFromFormatId !== null && $fileShadow->parentFileShadow == null) {
 						foreach($shadow->fileShadows as $anotherFileShadow) {
@@ -61,11 +58,7 @@ class AssetFileProcessor extends \CHAOS\Harvester\Processors\FileProcessor {
 					} elseif ($this->_DerivedFromFormatId !== null && $fileShadow->parentFileShadow != null) {
 						throw new \RuntimeException("Couldn't set the parent file shadow using the DerivedFromFormatId, because the parent was already sat.");
 					}
-					
 					$shadow->fileShadows[] = $fileShadow;
-					/*if($file->AssetFileType == '' && !in_array('Image', $shadow->extras['fileTypes'])) {
-						$shadow->extras['fileTypes'][] = 'Image';
-					}*/
 				} else {
 					throw new \RuntimeException("Unexpected base url of an asset file: {$file->Location}");
 				}
