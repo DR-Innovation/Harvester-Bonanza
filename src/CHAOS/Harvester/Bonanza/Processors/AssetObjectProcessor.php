@@ -11,7 +11,7 @@ class AssetObjectProcessor extends \CHAOS\Harvester\Processors\ObjectProcessor {
 		return sprintf("(%s OR %s)", $legacyQuery, $newQuery);
 	}
 	
-	public function process($externalObject, $shadow = null) {
+	public function process($externalObject, &$shadow = null) {
 		$this->_harvester->debug(__CLASS__." is processing.");
 		
 		/* @var $externalObject \SimpleXMLElement */
@@ -23,22 +23,24 @@ class AssetObjectProcessor extends \CHAOS\Harvester\Processors\ObjectProcessor {
 		$shadow->extras["AssetId"] = strval($externalObject->AssetId);
 		
 		$shadow->query = $this->generateQuery($externalObject);
-		var_dump($externalObject);
-		$shadow = $this->_harvester->process('asset_metadata_dka', $externalObject, $shadow);
-		$shadow = $this->_harvester->process('asset_metadata_dka2', $externalObject, $shadow);
-		$shadow = $this->_harvester->process('asset_metadata_dka_dr', $externalObject, $shadow);
-		$shadow = $this->_harvester->process('asset_file_thumb', $externalObject, $shadow);
-		$shadow = $this->_harvester->process('asset_file_video_high', $externalObject, $shadow);
-		$shadow = $this->_harvester->process('asset_file_video_mid', $externalObject, $shadow);
-		$shadow = $this->_harvester->process('asset_file_video_low', $externalObject, $shadow);
-		$shadow = $this->_harvester->process('asset_file_audio', $externalObject, $shadow);
+		
+		// var_dump($externalObject);
+		
+		$this->_harvester->process('asset_metadata_dka', $externalObject, $shadow);
+		$this->_harvester->process('asset_metadata_dka2', $externalObject, $shadow);
+		$this->_harvester->process('asset_metadata_dka_dr', $externalObject, $shadow);
+		$this->_harvester->process('asset_file_thumb', $externalObject, $shadow);
+		$this->_harvester->process('asset_file_video_high', $externalObject, $shadow);
+		$this->_harvester->process('asset_file_video_mid', $externalObject, $shadow);
+		$this->_harvester->process('asset_file_video_low', $externalObject, $shadow);
+		$this->_harvester->process('asset_file_audio', $externalObject, $shadow);
 		
 		$shadow->commit($this->_harvester);
 		
 		return $shadow;
 	}
 	
-	function skip($externalObject, $shadow = null) {
+	function skip($externalObject, &$shadow = null) {
 		$shadow = new SkippedObjectShadow();
 		$shadow = $this->initializeShadow($shadow);
 		$shadow->query = $this->generateQuery($externalObject);

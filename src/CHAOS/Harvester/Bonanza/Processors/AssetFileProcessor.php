@@ -21,7 +21,7 @@ class AssetFileProcessor extends \CHAOS\Harvester\Processors\FileProcessor {
 		}
 	}
 	
-	public function process($externalObject, $shadow = null) {
+	public function process($externalObject, &$shadow = null) {
 		if(!($shadow instanceof ObjectShadow)) {
 			throw new \RuntimeException("The shadow has to be an initialized ObjectShadow.");
 		}
