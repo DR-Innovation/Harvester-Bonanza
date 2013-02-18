@@ -33,7 +33,7 @@
 		<chc:Filters>
 			<chc:EmbeddedFilter language="PHP">
 			if(strlen(trim($externalObject->ProductionId)) !== 11) {
-				return "The ProductionId is not a 11 character number.";
+				return sprintf("The ProductionId is not a 11 character number, got '%s' (title: '%s' and asset-id: '%s')", trim($externalObject->ProductionId), trim($externalObject->Title), trim($externalObject->AssetId));
 			}
 			</chc:EmbeddedFilter>
 		</chc:Filters>
