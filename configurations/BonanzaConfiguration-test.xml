@@ -8,7 +8,7 @@
     <chc:path>Base/src</chc:path>
     <chc:path>chaos-client/src</chc:path>
     <chc:path>Timed-PHP/src</chc:path>
-    <chc:path>Bonanza/src</chc:path>
+    <chc:path>../src</chc:path>
   </chc:IncludePaths>
   <chc:ChaosConfiguration>
 	<chc:URL fromEnvironment="CHAOS_URL" />
