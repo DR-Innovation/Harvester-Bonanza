@@ -50,20 +50,20 @@
     </chc:ObjectProcessor>
     <chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_metadata_dka">
-      <chc:Parameter name="stylesheet">Bonanza/stylesheets/DKA.xsl</chc:Parameter>
+      <chc:Parameter name="stylesheet">../stylesheets/DKA.xsl</chc:Parameter>
    	  <chc:validate>false</chc:validate>
    	  <chc:schemaGUID>00000000-0000-0000-0000-000063c30000</chc:schemaGUID>
     </chc:MetadataProcessor>
     <chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_metadata_dka2">
-      <chc:Parameter name="stylesheet">Bonanza/stylesheets/DKA2.xsl</chc:Parameter>
+      <chc:Parameter name="stylesheet">../stylesheets/DKA2.xsl</chc:Parameter>
    	  <chc:validate>true</chc:validate>
    	  <chc:schemaGUID>5906a41b-feae-48db-bfb7-714b3e105396</chc:schemaGUID>
    	  <chc:schemaLocation>Base/schemas/DKA2.xsd</chc:schemaLocation>
     </chc:MetadataProcessor>
     <chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_metadata_dka_dr">
-      <chc:Parameter name="stylesheet">Bonanza/stylesheets/DKA.DR.xsl</chc:Parameter>
+      <chc:Parameter name="stylesheet">../stylesheets/DKA.DR.xsl</chc:Parameter>
    	  <chc:validate>true</chc:validate>
    	  <chc:schemaGUID>1221c2dd-3b23-4d27-97b3-ca7bf4720ecb</chc:schemaGUID>
    	  <chc:schemaLocation>Base/schemas/DKA.DR.xsd</chc:schemaLocation>
