@@ -31,12 +31,12 @@
     <chc:ObjectProcessor className="AssetObjectProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset">
 		<chc:Filters>
-			<chc:EmbeddedFilter language="PHP">
+			<chc:EmbeddedFilter language="PHP"><![CDATA[
 			$productionIdLength = strlen(trim($externalObject->ProductionId));
-			if(productionIdLength !== 0 && productionIdLength !== 11) {
+			if($productionIdLength !== 0 && $productionIdLength !== 11) {
 				return sprintf("The ProductionId is not empty or an 11 character number, got '%s' (title: '%s' and asset-id: '%s')", trim($externalObject->ProductionId), trim($externalObject->Title), trim($externalObject->AssetId));
 			}
-			</chc:EmbeddedFilter>
+			]]></chc:EmbeddedFilter>
 		</chc:Filters>
     	<chc:FolderId>252</chc:FolderId>
     	<chc:ObjectTypeId>36</chc:ObjectTypeId>
