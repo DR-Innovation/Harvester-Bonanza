@@ -41,7 +41,8 @@ class AssetObjectProcessor extends \CHAOS\Harvester\Processors\ObjectProcessor {
 	}
 	
 	function skip($externalObject, &$shadow = null) {
-		$shadow = new SkippedObjectShadow();
+		$shadow = new ObjectShadow();
+		$shadow->skipped = true;
 		$shadow = $this->initializeShadow($shadow);
 		$shadow->query = $this->generateQuery($externalObject);
 		
