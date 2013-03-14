@@ -1,7 +1,6 @@
 <?php
 namespace CHAOS\Harvester\Bonanza\Processors;
 use CHAOS\Harvester\Shadows\ObjectShadow;
-use CHAOS\Harvester\Shadows\SkippedObjectShadow;
 
 class AssetObjectProcessor extends \CHAOS\Harvester\Processors\ObjectProcessor {
 	
