@@ -28,6 +28,10 @@
   		namespace="CHAOS\Harvester\Bonanza\Modes" name="by-startdate" />
   </chc:Modes>
   <chc:Processors>
+    <chc:PreProcessor name="production_id_corrector" className="ProductionIDPreProcessor"
+    	namespace="\CHAOS\Harvester\Bonanza\Processors">
+    	<chc:Parameter name="datafile">./production-id-corrections.csv</chc:Parameter>
+    </chc:PreProcessor>
     <chc:ObjectProcessor className="AssetObjectProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset">
 		<chc:Filters>
@@ -38,6 +42,7 @@
 			}
 			]]></chc:EmbeddedFilter>
 		</chc:Filters>
+		<chc:PreProcessor>production_id_corrector</chc:PreProcessor>
     	<chc:FolderId>252</chc:FolderId>
     	<chc:ObjectTypeId>36</chc:ObjectTypeId>
 		<chc:PublishSettings>
