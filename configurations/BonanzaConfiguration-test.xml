@@ -60,14 +60,14 @@
       <chc:Parameter name="stylesheet">../stylesheets/DKA2.xsl</chc:Parameter>
    	  <chc:validate>true</chc:validate>
    	  <chc:schemaGUID>5906a41b-feae-48db-bfb7-714b3e105396</chc:schemaGUID>
-   	  <chc:schemaLocation>Base/schemas/DKA2.xsd</chc:schemaLocation>
+   	  <chc:schemaLocation>abstract-harvester-base/schemas/DKA2.xsd</chc:schemaLocation>
     </chc:MetadataProcessor>
     <chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_metadata_dka_dr">
       <chc:Parameter name="stylesheet">../stylesheets/DKA.DR.xsl</chc:Parameter>
    	  <chc:validate>true</chc:validate>
    	  <chc:schemaGUID>1221c2dd-3b23-4d27-97b3-ca7bf4720ecb</chc:schemaGUID>
-   	  <chc:schemaLocation>Base/schemas/DKA.DR.xsd</chc:schemaLocation>
+   	  <chc:schemaLocation>abstract-harvester-base/schemas/DKA.DR.xsd</chc:schemaLocation>
     </chc:MetadataProcessor>
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_thumb">
