@@ -72,6 +72,7 @@ class BonanzaClient extends \SoapClient {
 			'password' => $this->_password);
 		$response = $this->BonanzaGetDataByStartdate($data);
 		$result = $response->BonanzaGetDataByStartdateResult;
+		var_dump($result);
 		$xml = simplexml_load_string($result);
 		return $xml;
 	}
@@ -106,7 +107,6 @@ class BonanzaClient extends \SoapClient {
 	}*/
 	
 	/**
-	 * 
 	 * Fetches all movies using several calls to the fetchMovies method.
 	 * @param int $batchSize How many movies are queried at the same time, maximal 1000.
 	 * @param int $delay A non-negative integer specifing the amount of micro seconds to sleep between each call to the API, use this to do a slow fetch.
