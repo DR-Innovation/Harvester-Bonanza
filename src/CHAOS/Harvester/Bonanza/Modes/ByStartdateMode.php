@@ -23,8 +23,6 @@ class ByStartdateMode extends \CHAOS\Harvester\Modes\SetByReferenceMode implemen
 		$this->_harvester->info("Found %u movieclips.", count($assets));
 		
 		foreach($assets as $asset) {
-			var_dump($asset);
-			exit;
 			printf("[#%u/%u] ", $m++, count($assets));
 			$assetShadow = null;
 			try {

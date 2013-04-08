@@ -72,7 +72,7 @@ class BonanzaClient extends \SoapClient {
 			'password' => $this->_password);
 		$response = $this->BonanzaGetDataByStartdate($data);
 		$result = $response->BonanzaGetDataByStartdateResult;
-		var_dump($result);
+		//var_dump($result);
 		$xml = simplexml_load_string($result);
 		return $xml;
 	}

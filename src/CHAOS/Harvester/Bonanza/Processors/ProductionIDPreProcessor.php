@@ -3,8 +3,8 @@ namespace CHAOS\Harvester\Bonanza\Processors;
 
 class ProductionIDPreProcessor extends \CHAOS\Harvester\Processors\PreProcessor {
 	
-	protected static $_translationsByBrokenProductionID = array();
-	protected static $_translationsByAssetID = array();
+	protected $_translationsByBrokenProductionID = array();
+	protected $_translationsByAssetID = array();
 	
 	public function __construct($harvester, $name, $parameters) {
 		parent::__construct($harvester, $name, $parameters);
@@ -39,8 +39,21 @@ class ProductionIDPreProcessor extends \CHAOS\Harvester\Processors\PreProcessor 
 	}
 	
 	public function process(&$externalObject, &$shadow = null) {
-		// TODO This preprocessor has to make a translation of GUIDs
-		// FIXME When the webserver is responding.
-		//var_dump("Processing with the production id pre processor.");
+		$newProductionID = null;
+		
+		if(array_key_exists(strval($externalObject->ProductionId), $this->_translationsByBrokenProductionID)) {
+			$newProductionID = $this->_translationsByBrokenProductionID[strval($externalObject->ProductionId)];
+		} else if(array_key_exists(strval($externalObject->AssetId), $this->_translationsByAssetID)) {
+			$newProductionID = $this->_translationsByAssetID[strval($externalObject->AssetId)];
+		} else {
+			// Abort as this production id is apparently correct already.
+			return;
+		}
+		
+		// TODO Check if this even works.
+		if($newProductionID != null) {
+			$this->_harvester->debug("Correcting production ID '%s' to '%s'", $externalObject->ProductionId, $newProductionID);
+			$externalObject->ProductionId = $newProductionID;
+		}
 	}
 }
