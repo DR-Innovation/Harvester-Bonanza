@@ -52,27 +52,27 @@
     </chc:ObjectProcessor>
     <chc:ObjectProcessor className="AssetObjectProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_video">
-    	<chc:FolderId>252</chc:FolderId>
+    	<chc:FolderId>444</chc:FolderId>
     	<chc:ObjectTypeId>36</chc:ObjectTypeId>
 		<chc:PublishSettings>
 			<chc:PublishAccesspoint>
-				30000000-0000-0000-0000-000000000000
+				C4C2B8DA-A980-11E1-814B-02CEA2621172
 			</chc:PublishAccesspoint>
 			<chc:UnpublishAccesspoint>
-				30000000-0000-0000-0000-000000000000
+				C4C2B8DA-A980-11E1-814B-02CEA2621172
 			</chc:UnpublishAccesspoint>
 		</chc:PublishSettings>
     </chc:ObjectProcessor>
     <chc:ObjectProcessor className="AssetObjectProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_radio">
-    	<chc:FolderId>252</chc:FolderId>
+    	<chc:FolderId>715</chc:FolderId>
     	<chc:ObjectTypeId>36</chc:ObjectTypeId>
 		<chc:PublishSettings>
 			<chc:PublishAccesspoint>
-				30000000-0000-0000-0000-000000000000
+				C4C2B8DA-A980-11E1-814B-02CEA2621172
 			</chc:PublishAccesspoint>
 			<chc:UnpublishAccesspoint>
-				30000000-0000-0000-0000-000000000000
+				C4C2B8DA-A980-11E1-814B-02CEA2621172
 			</chc:UnpublishAccesspoint>
 		</chc:PublishSettings>
     </chc:ObjectProcessor>
@@ -99,46 +99,46 @@
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_thumb">
       <chc:Parameter name="AssetFileType">Thumb</chc:Parameter>
-      <chc:FormatId>3</chc:FormatId>
+      <chc:FormatId>10</chc:FormatId>
       <chc:Destination name="default">
         <chc:baseURL>http://downol.dr.dk/download/</chc:baseURL>
-        <chc:id>24</chc:id>
+        <chc:id>126</chc:id>
       </chc:Destination>
     </chc:FileProcessor>
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_high">
       <chc:Parameter name="AssetFileType">VideoHigh</chc:Parameter>
-      <chc:FormatId>1</chc:FormatId>
+      <chc:FormatId>8</chc:FormatId>
       <chc:Destination name="default">
         <chc:baseURL>rtmp://vod-bonanza.gss.dr.dk/bonanza/</chc:baseURL>
-        <chc:id>25</chc:id>
+        <chc:id>125</chc:id>
       </chc:Destination>
     </chc:FileProcessor>
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_mid">
       <chc:Parameter name="AssetFileType">VideoMid</chc:Parameter>
-      <chc:FormatId>1</chc:FormatId>
+      <chc:FormatId>8</chc:FormatId>
       <chc:Destination name="default">
         <chc:baseURL>rtmp://vod-bonanza.gss.dr.dk/bonanza/</chc:baseURL>
-        <chc:id>25</chc:id>
+        <chc:id>125</chc:id>
       </chc:Destination>
     </chc:FileProcessor>
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_low">
       <chc:Parameter name="AssetFileType">VideoLow</chc:Parameter>
-      <chc:FormatId>1</chc:FormatId>
+      <chc:FormatId>8</chc:FormatId>
       <chc:Destination name="default">
         <chc:baseURL>rtmp://vod-bonanza.gss.dr.dk/bonanza/</chc:baseURL>
-        <chc:id>25</chc:id>
+        <chc:id>125</chc:id>
       </chc:Destination>
     </chc:FileProcessor>
     <chc:FileProcessor className="AssetFileProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_audio">
       <chc:Parameter name="AssetFileType">Audio</chc:Parameter>
-      <chc:FormatId>2</chc:FormatId>
+      <chc:FormatId>23</chc:FormatId>
       <chc:Destination name="default">
         <chc:baseURL>http://downol.dr.dk/download/</chc:baseURL>
-        <chc:id>24</chc:id>
+        <chc:id>126</chc:id>
       </chc:Destination>
     </chc:FileProcessor>
   </chc:Processors>
