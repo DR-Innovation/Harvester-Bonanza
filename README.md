@@ -10,7 +10,7 @@ To be updated, the first time anyone hints this might be desired, I will take th
 * The CHAOS Client for PHP must be cloned from https://github.com/CHAOS-Community/CHAOS.Portal.Client-PHP into some local folder.
 * PHP 5.3.5+ is required.
 * The CURL plugin must be enabled in PHP.
-* The iconv plugun must be enables in PHP (it is by default).
+* The iconv plugin must be enables in PHP (it is by default).
 * The Harvester-Base project from CHAOS-Community https://github.com/CHAOS-Community/Harvester-Base/ as well as that projects requirements.
 
 ##License  
