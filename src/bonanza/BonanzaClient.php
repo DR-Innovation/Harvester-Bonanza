@@ -83,7 +83,7 @@ class BonanzaClient extends \SoapClient {
 	 */
 	public function GetEverything() {
 		//return $this->GetDataByStartdate('1753-01-01T00:00:00'); // Earliest valid dataTime.
-		return $this->GetDataByStartdate('1900-01-01T00:00:00'); // Earliest valid dataTime.
+		return $this->GetDataByStartdate('1940-01-01T00:00:00'); // Earliest valid dataTime.
 	}
 	
 	/**
