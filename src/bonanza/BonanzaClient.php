@@ -82,7 +82,8 @@ class BonanzaClient extends \SoapClient {
 	 * @return \SimpleXMLElement Representing the data of the result.
 	 */
 	public function GetEverything() {
-		return $this->GetDataByStartdate('1753-01-01T00:00:00'); // Earliest valid dataTime.
+		//return $this->GetDataByStartdate('1753-01-01T00:00:00'); // Earliest valid dataTime.
+		return $this->GetDataByStartdate('1900-01-01T00:00:00'); // Earliest valid dataTime.
 	}
 	
 	/**
