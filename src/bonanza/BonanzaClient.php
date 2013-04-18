@@ -46,7 +46,7 @@ class BonanzaClient extends \SoapClient {
 	}
 	
 	/**
-	 * GetDataByCategory wraps a call to BonanzaGetDataByCategory with username and password.
+	 * GetDataByCategory gets every asset from a specific category.
 	 * @param integer $categoryId The category to get.
 	 */
 	public function GetDataByCategory($categoryId = null) {
@@ -61,29 +61,89 @@ class BonanzaClient extends \SoapClient {
 	}
 	
 	/**
-	 * GetDataByCategory wraps a call to BonanzaGetDataByCategory with username and password.
+	 * GetDataByStartdate gets every asset from a specific start date.
 	 * @param integer $categoryId The category to get.
 	 * @return \SimpleXMLElement Representing the data of the result.
 	 */
 	public function GetDataByStartdate($limitDateBegin = null) {
+		if($limitDateBegin instanceof \DateTime) {
+			$limitDateBegin = $limitDateBegin->format(DateTime::W3C);
+		}
 		$data = array(
 			'limitDateBegin' => $limitDateBegin,
 			'username' => $this->_username,
 			'password' => $this->_password);
 		$response = $this->BonanzaGetDataByStartdate($data);
 		$result = $response->BonanzaGetDataByStartdateResult;
-		//var_dump($result);
+		
+		libxml_clear_errors();
 		$xml = simplexml_load_string($result);
+		if(libxml_get_last_error() !== false) {
+			printf("Error parsing the response from the service: %s\n", $result);
+		}
 		return $xml;
+	}
+	
+	public function GetDataByDates($limitDateBegin, $limitDateEnd) {
+		if($limitDateBegin instanceof \DateTime) {
+			$limitDateBegin = $limitDateBegin->format(\DateTime::W3C);
+		}
+		if($limitDateEnd instanceof \DateTime) {
+			$limitDateEnd = $limitDateEnd->format(\DateTime::W3C);
+		}
+		
+		$data = array(
+			'limitDateBegin' => $limitDateBegin,
+			'limitDateEnd' => $limitDateEnd,
+			'username' => $this->_username,
+			'password' => $this->_password);
+		$response = $this->BonanzaGetDataByDates($data);
+		$result = $response->BonanzaGetDataByDatesResult;
+		
+		libxml_clear_errors();
+		$xml = simplexml_load_string($result);
+		if(libxml_get_last_error() !== false) {
+			printf("Error parsing the response from the service: %s\n", $result);
+		}
+		return $xml;
+	}
+	
+	/**
+	 * GetEverything wraps a call to BonanzaGetDataByCategory with username and password.
+	 * @return \SimpleXMLElement Representing the data of the result.
+	 */
+	public function GetEverything() {
+		//return $this->GetDataByStartdate('1753-01-01T00:00:00'); // Earliest valid dataTime - but this was too aggressive for the service.
+		return $this->GetEverythingSlowly();
 	}
 	
 	/**
 	 * GetDataByCategory wraps a call to BonanzaGetDataByCategory with username and password.
 	 * @return \SimpleXMLElement Representing the data of the result.
 	 */
-	public function GetEverything() {
-		//return $this->GetDataByStartdate('1753-01-01T00:00:00'); // Earliest valid dataTime.
-		return $this->GetDataByStartdate('1940-01-01T00:00:00'); // Earliest valid dataTime.
+	public function GetEverythingSlowly($start = '2010-01-01T00:00:00', $step = 'P1Y') {
+		$step = new \DateInterval($step);
+		
+		$today = new \DateTime();
+		$limitDateBegin = new \DateTime($start);
+		$limitDateEnd = clone $limitDateBegin;
+		$limitDateEnd->add($step);
+
+		$result = array();
+		
+		do {
+			$response = $this->GetDataByDates($limitDateBegin, $limitDateEnd);
+			$limitDateBegin->add($step);
+			$limitDateEnd->add($step);
+			if($response->count() > 0) {
+				printf("Found %u Bonanza Assets in year %s.\n", count($response->Asset), $limitDateBegin->format('Y'));
+				foreach($response->Asset as $asset) {
+					$result[] = $asset;
+				}
+			}
+		} while($limitDateEnd < $today);
+		
+		return $result;
 	}
 	
 	/**
