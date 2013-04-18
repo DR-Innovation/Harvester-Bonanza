@@ -18,7 +18,7 @@ class BasicAssetObjectProcessor extends \CHAOS\Harvester\Processors\ObjectProces
 		$shadow = new ObjectShadow();
 		if($externalObject->AssetType == 'Video') {
 			$shadow = $this->_harvester->process('asset_video', $externalObject, $shadow);
-		} elseif ($externalObject->AssetType == 'Radio') {
+		} elseif ($externalObject->AssetType == 'Audio' || $externalObject->AssetType == 'Radio') {
 			$shadow = $this->_harvester->process('asset_radio', $externalObject, $shadow);
 		} else {
 			throw new \RuntimeException(sprintf("Incountered an unknown AssetType '%s'.", strval($externalObject->AssetType)));
