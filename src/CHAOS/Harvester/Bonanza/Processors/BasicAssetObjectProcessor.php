@@ -21,7 +21,7 @@ class BasicAssetObjectProcessor extends \CHAOS\Harvester\Processors\ObjectProces
 		} elseif ($externalObject->AssetType == 'Radio') {
 			$shadow = $this->_harvester->process('asset_radio', $externalObject, $shadow);
 		} else {
-			throw new \RuntimeException("Incountered an unknown AssetType '%s'.", strval($externalObject->AssetType));
+			throw new \RuntimeException(sprintf("Incountered an unknown AssetType '%s'.", strval($externalObject->AssetType)));
 		}
 		
 		$shadow->commit($this->_harvester);
