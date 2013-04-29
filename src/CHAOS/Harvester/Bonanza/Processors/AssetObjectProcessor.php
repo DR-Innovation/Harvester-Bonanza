@@ -6,11 +6,9 @@ class AssetObjectProcessor extends BasicAssetObjectProcessor {
 	
 	public function process(&$externalObject, &$shadow = null) {
 		/* @var $externalObject \SimpleXMLElement */
-		
-		$shadow = $this->initializeShadow($shadow);
+
 		$shadow->extras["AssetId"] = strval($externalObject->AssetId);
-		
-		$shadow->query = $this->generateQuery($externalObject);
+		$shadow = $this->initializeShadow($externalObject, $shadow);
 		
 		$this->_harvester->process('asset_metadata_dka', $externalObject, $shadow);
 		$this->_harvester->process('asset_metadata_dka2', $externalObject, $shadow);

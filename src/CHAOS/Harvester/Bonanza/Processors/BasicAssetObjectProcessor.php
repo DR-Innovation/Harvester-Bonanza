@@ -29,6 +29,7 @@ class BasicAssetObjectProcessor extends \CHAOS\Harvester\Processors\ObjectProces
 		return $shadow;
 	}
 	
+	/*
 	function skip($externalObject, &$shadow = null) {
 		$shadow = new ObjectShadow();
 		$shadow->skipped = true;
@@ -39,4 +40,5 @@ class BasicAssetObjectProcessor extends \CHAOS\Harvester\Processors\ObjectProces
 		
 		return $shadow;
 	}
+	*/
 }
