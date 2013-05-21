@@ -30,7 +30,7 @@ class BonanzaClient extends \SoapClient {
 	 * @param string $baseURL 
 	 */
 	public function __construct($baseURL, $username, $password) {
-		parent::__construct($baseURL.'?WSDL');
+		parent::__construct($baseURL.'?WSDL', array('keep_alive' => false)); // We cannot use keep_alive with the Bonanza service when processing takes time.
 		$this->_baseURL = $baseURL;
 		$this->_username = $username;
 		$this->_password = $password;
@@ -97,6 +97,7 @@ class BonanzaClient extends \SoapClient {
 			'limitDateEnd' => $limitDateEnd,
 			'username' => $this->_username,
 			'password' => $this->_password);
+		$this->
 		$response = $this->BonanzaGetDataByDates($data);
 		$result = $response->BonanzaGetDataByDatesResult;
 		
