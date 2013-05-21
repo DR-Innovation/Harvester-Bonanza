@@ -97,7 +97,7 @@ class BonanzaClient extends \SoapClient {
 			'limitDateEnd' => $limitDateEnd,
 			'username' => $this->_username,
 			'password' => $this->_password);
-		$this->
+		
 		$response = $this->BonanzaGetDataByDates($data);
 		$result = $response->BonanzaGetDataByDatesResult;
 		
