@@ -30,7 +30,11 @@ class BonanzaClient extends \SoapClient {
 	 * @param string $baseURL 
 	 */
 	public function __construct($baseURL, $username, $password) {
-		parent::__construct($baseURL.'?WSDL', array('keep_alive' => false)); // We cannot use keep_alive with the Bonanza service when processing takes time.
+		// Using HTTP 1.0 will fix the error of broken pipes.
+		// See https://bugs.php.net/bug.php?id=60329
+		$socket_context = stream_context_create( array('http' => array('protocol_version'  => 1.0) ) );
+		//parent::__construct($baseURL.'?WSDL', array('keep_alive' => false)); // We cannot use keep_alive with the Bonanza service when processing takes time.
+		parent::__construct($baseURL.'?WSDL', array('stream_context' => $socket_context)); // We cannot use keep_alive with the Bonanza service when processing takes time.
 		$this->_baseURL = $baseURL;
 		$this->_username = $username;
 		$this->_password = $password;
