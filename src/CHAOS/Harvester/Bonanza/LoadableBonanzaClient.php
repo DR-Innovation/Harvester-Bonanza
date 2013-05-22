@@ -1,6 +1,6 @@
 <?php
 /**
- * This is a very minimalistic client for the open DFI API.
+ * This is a very minimalistic client for the Bonanza API.
  *
  * LICENSE: This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
