@@ -7,7 +7,8 @@ class AssetXSLTMetadataProcessor extends XSLTMetadataProcessor {
 	
 	const ACTORS_PATTERN = '/(?P<Name>.*?), ?(?P<Role>.*?); ?/';
 	const COLOPHON_PATTERN = '/(?P<Role>.*?): ?(?P<Name>.*?)\. ?/';
-	const SUBJECT_PATTERN = '/([^;]*); ?/';
+	// One should think that a ;-delimitor should be sufficient, but it turned out not to be.
+	const SUBJECT_PATTERN = '/([^;,]*)[;,] ?/';
 	
 	public static function xslt_contributors ($actors) {
 		return XSLTMetadataProcessor::preg_explode_to_xml($actors, self::ACTORS_PATTERN, 'Contributor', 'Person', 'http://www.danskkulturarv.dk/DKA.xsd', true);
