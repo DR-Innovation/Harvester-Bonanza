@@ -36,6 +36,11 @@
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset">
 		<chc:Filters>
 			<chc:EmbeddedFilter language="PHP"><![CDATA[
+			if(array_key_exists('UNPUBLISH_EVERYTHING', $_SERVER) && $_SERVER['UNPUBLISH_EVERYTHING'] == 'true') {
+				return "The UNPUBLISH_EVERYTHING is enabled.";
+			}
+			]]></chc:EmbeddedFilter>
+			<chc:EmbeddedFilter language="PHP"><![CDATA[
 			$productionIdLength = strlen(trim($externalObject->ProductionId));
 			if($productionIdLength !== 0 && $productionIdLength !== 11) {
 				return sprintf("The ProductionId is not empty or an 11 character number, got '%s' (title: '%s' and asset-id: '%s')", trim($externalObject->ProductionId), trim($externalObject->Title), trim($externalObject->AssetId));
