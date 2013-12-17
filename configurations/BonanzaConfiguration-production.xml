@@ -35,7 +35,7 @@
     <chc:ObjectProcessor className="BasicAssetObjectProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset">
 		<chc:Filters>
-			<chc:EmbeddedFilter language="PHP"><![CDATA[
+			<chc:EmbeddedFilter language="PHP" name="unpublish_everything"><![CDATA[
 			if(array_key_exists('UNPUBLISH_EVERYTHING', $_SERVER) && $_SERVER['UNPUBLISH_EVERYTHING'] == 'true') {
 				return "The UNPUBLISH_EVERYTHING is enabled.";
 			}
