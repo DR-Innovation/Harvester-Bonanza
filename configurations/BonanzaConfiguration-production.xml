@@ -35,11 +35,6 @@
     <chc:ObjectProcessor className="BasicAssetObjectProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset">
 		<chc:Filters>
-			<chc:EmbeddedFilter language="PHP" name="unpublish_everything"><![CDATA[
-			if(array_key_exists('UNPUBLISH_EVERYTHING', $_SERVER) && $_SERVER['UNPUBLISH_EVERYTHING'] == 'true') {
-				return "The UNPUBLISH_EVERYTHING is enabled.";
-			}
-			]]></chc:EmbeddedFilter>
 			<chc:EmbeddedFilter language="PHP"><![CDATA[
 			$productionIdLength = strlen(trim($externalObject->ProductionId));
 			if($productionIdLength !== 0 && $productionIdLength !== 11) {
@@ -57,6 +52,13 @@
     </chc:ObjectProcessor>
     <chc:ObjectProcessor className="AssetObjectProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_video">
+    	<chc:Filters>
+			<chc:EmbeddedFilter language="PHP" name="unpublish_everything"><![CDATA[
+			if(array_key_exists('UNPUBLISH_EVERYTHING', $_SERVER) && $_SERVER['UNPUBLISH_EVERYTHING'] == 'true') {
+				return "The UNPUBLISH_EVERYTHING is enabled.";
+			}
+			]]></chc:EmbeddedFilter>
+		</chc:Filters>
     	<chc:FolderId>444</chc:FolderId>
     	<chc:ObjectTypeId>36</chc:ObjectTypeId>
 		<chc:PublishSettings>
@@ -70,6 +72,13 @@
     </chc:ObjectProcessor>
     <chc:ObjectProcessor className="AssetObjectProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_radio">
+    	<chc:Filters>
+			<chc:EmbeddedFilter language="PHP" name="unpublish_everything"><![CDATA[
+			if(array_key_exists('UNPUBLISH_EVERYTHING', $_SERVER) && $_SERVER['UNPUBLISH_EVERYTHING'] == 'true') {
+				return "The UNPUBLISH_EVERYTHING is enabled.";
+			}
+			]]></chc:EmbeddedFilter>
+		</chc:Filters>
     	<chc:FolderId>715</chc:FolderId>
     	<chc:ObjectTypeId>36</chc:ObjectTypeId>
 		<chc:PublishSettings>
