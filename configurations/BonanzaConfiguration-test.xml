@@ -79,12 +79,12 @@
 			</chc:UnpublishAccesspoint>
 		</chc:PublishSettings>
     </chc:ObjectProcessor>
-    <chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
+    <!-- chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_metadata_dka">
       <chc:Parameter name="stylesheet">../stylesheets/DKA.xsl</chc:Parameter>
    	  <chc:validate>false</chc:validate>
    	  <chc:schemaGUID>00000000-0000-0000-0000-000063c30000</chc:schemaGUID>
-    </chc:MetadataProcessor>
+    </chc:MetadataProcessor -->
     <chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
     	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_metadata_dka2">
       <chc:Parameter name="stylesheet">../stylesheets/DKA2.xsl</chc:Parameter>
