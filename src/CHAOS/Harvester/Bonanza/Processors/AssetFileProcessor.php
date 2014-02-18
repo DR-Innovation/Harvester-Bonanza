@@ -38,6 +38,11 @@ class AssetFileProcessor extends \CHAOS\Harvester\Processors\FileProcessor {
 				throw new \RuntimeException("Unexpected base url of an asset file type: {$this->_AssetFileType}");
 		}
 		
+		/*
+		var_dump($externalObject->AssetFiles);
+		exit;
+		*/
+		
 		foreach($externalObject->AssetFiles->AssetFile as $file) {
 			if($file->AssetFileType == $this->_AssetFileType) {
 				// This filter instance is ment for this particular asset file type.

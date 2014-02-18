@@ -15,7 +15,7 @@ class WhitelistedAssetsFilter extends \CHAOS\Harvester\Filters\Filter {
 				$datafile_rows = str_getcsv($datafile, "\n");
 				foreach($datafile_rows as $row) {
 					if(strlen($row) != 11) {
-						throw new \RuntimeException("Malformed datafile, all rows have to have exact 11 charecters.");
+						throw new \RuntimeException("Malformed datafile, all rows have to have exact 11 charecters (it was ".strlen($row).").");
 					}
 					$this->_whitelistedProductionIDs[] = $row;
 				}
