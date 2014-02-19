@@ -113,7 +113,7 @@
       <chc:Parameter name="AssetFileType">VideoHigh</chc:Parameter>
       <chc:FormatId>1</chc:FormatId>
       <chc:Destination name="default">
-        <chc:baseURL>rtmp://vod-bonanza.gss.dr.dk/bonanza/</chc:baseURL>
+        <chc:baseURL>rtmp://vod-kulturarv.dr.dk/bonanza/</chc:baseURL>
         <chc:id>25</chc:id>
       </chc:Destination>
     </chc:FileProcessor>
@@ -122,7 +122,7 @@
       <chc:Parameter name="AssetFileType">VideoMid</chc:Parameter>
       <chc:FormatId>1</chc:FormatId>
       <chc:Destination name="default">
-        <chc:baseURL>rtmp://vod-bonanza.gss.dr.dk/bonanza/</chc:baseURL>
+        <chc:baseURL>rtmp://vod-kulturarv.dr.dk/bonanza/</chc:baseURL>
         <chc:id>25</chc:id>
       </chc:Destination>
     </chc:FileProcessor>
@@ -131,7 +131,7 @@
       <chc:Parameter name="AssetFileType">VideoLow</chc:Parameter>
       <chc:FormatId>1</chc:FormatId>
       <chc:Destination name="default">
-        <chc:baseURL>rtmp://vod-bonanza.gss.dr.dk/bonanza/</chc:baseURL>
+        <chc:baseURL>rtmp://vod-kulturarv.dr.dk/bonanza/</chc:baseURL>
         <chc:id>25</chc:id>
       </chc:Destination>
     </chc:FileProcessor>
