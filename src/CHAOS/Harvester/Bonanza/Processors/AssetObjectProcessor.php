@@ -10,7 +10,7 @@ class AssetObjectProcessor extends BasicAssetObjectProcessor {
 		$shadow->extras["AssetId"] = strval($externalObject->AssetId);
 		$shadow = $this->initializeShadow($externalObject, $shadow);
 		
-		$this->_harvester->process('asset_metadata_dka', $externalObject, $shadow);
+		//$this->_harvester->process('asset_metadata_dka', $externalObject, $shadow);
 		$this->_harvester->process('asset_metadata_dka2', $externalObject, $shadow);
 		$this->_harvester->process('asset_metadata_dka_dr', $externalObject, $shadow);
 		$this->_harvester->process('asset_file_thumb', $externalObject, $shadow);
