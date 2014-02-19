@@ -4,8 +4,10 @@ namespace CHAOS\Harvester\Bonanza\Processors;
 use CHAOS\Harvester\Processors\XSLTMetadataProcessor;
 
 class AssetXSLTMetadataProcessor extends XSLTMetadataProcessor {
-	const ACTORS_PATTERN = '/(?P<Name>[^,;]*?)(?:, ?(?P<Role>[^,;]*?))?; ?/';
-	const COLOPHON_PATTERN = '/(?P<Role>.*?): ?(?P<Name>.*?)\. ?/';
+	//const ACTORS_PATTERN = '/(?P<Name>[^,;]*?)(?:, ?(?P<Role>[^,;]*?))?; ?/';
+	//const COLOPHON_PATTERN = '/(?P<Role>.*?): ?(?P<Name>.*?)\. ?/';
+	const ACTORS_PATTERN = '/(?P<nodeValue>[^,;]*?)(?:, ?(?P<Role>[^,;]*?))?; ?/';
+	const COLOPHON_PATTERN = '/(?P<Role>.*?): ?(?P<nodeValue>.*?)\. ?/';
 	// One should think that a ;-delimitor should be sufficient, but it turned out not to be.
 	const SUBJECT_PATTERN = '/([^;,]*)[;,] ?/';
 	
