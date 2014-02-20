@@ -28,7 +28,7 @@ class BasicAllMode extends \CHAOS\Harvester\Modes\AllMode implements \CHAOS\Harv
 		$result = array();
 	
 		do {
-			$response = $bonanza->GetDataByDates($limitDateBegin, $limitDateEnd);
+			$response = $bonanza->doGetDataByDates($limitDateBegin, $limitDateEnd);
 			if($response->count() > 0) {
 				$assets_count += count($response->Asset);
 				printf("Found %u Bonanza Assets in %s.\n", count($response->Asset), $limitDateBegin->format('F Y'));

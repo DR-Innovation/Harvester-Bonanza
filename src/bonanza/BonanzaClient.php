@@ -50,26 +50,26 @@ class BonanzaClient extends \SoapClient {
 	}
 	
 	/**
-	 * GetDataByCategory gets every asset from a specific category.
-	 * @param integer $categoryId The category to get.
+	 * doGetDataByCategory doGets every asset from a specific category.
+	 * @param integer $categoryId The category to doGet.
 	 */
-	public function GetDataByCategory($categoryId = null) {
+	public function doGetDataByCategory($categoryId = null) {
 		$data = array(
 			'categoryId' => $categoryId,
 			'username' => $this->_username,
 			'password' => $this->_password);
-		$response = $this->BonanzaGetDataByCategory($data);
-		$result = $response->BonanzaGetDataByCategoryResult;
+		$response = $this->GetDataByCategory($data);
+		$result = $response->GetDataByCategoryResult;
 		$xml = simplexml_load_string($result);
 		return $xml;
 	}
 	
 	/**
-	 * GetDataByStartdate gets every asset from a specific start date.
-	 * @param integer $categoryId The category to get.
+	 * doGetDataByStartdate doGets every asset from a specific start date.
+	 * @param integer $categoryId The category to doGet.
 	 * @return \SimpleXMLElement Representing the data of the result.
 	 */
-	public function GetDataByStartdate($limitDateBegin = null) {
+	public function doGetDataByStartdate($limitDateBegin = null) {
 		if($limitDateBegin instanceof \DateTime) {
 			$limitDateBegin = $limitDateBegin->format(DateTime::W3C);
 		}
@@ -77,8 +77,8 @@ class BonanzaClient extends \SoapClient {
 			'limitDateBegin' => $limitDateBegin,
 			'username' => $this->_username,
 			'password' => $this->_password);
-		$response = $this->BonanzaGetDataByStartdate($data);
-		$result = $response->BonanzaGetDataByStartdateResult;
+		$response = $this->GetDataByStartdate($data);
+		$result = $response->GetDataByStartdateResult;
 		
 		libxml_clear_errors();
 		$xml = simplexml_load_string($result);
@@ -88,7 +88,7 @@ class BonanzaClient extends \SoapClient {
 		return $xml;
 	}
 	
-	public function GetDataByDates($limitDateBegin, $limitDateEnd) {
+	public function doGetDataByDates($limitDateBegin, $limitDateEnd) {
 		if($limitDateBegin instanceof \DateTime) {
 			$limitDateBegin = $limitDateBegin->format(\DateTime::W3C);
 		}
@@ -102,8 +102,8 @@ class BonanzaClient extends \SoapClient {
 			'username' => $this->_username,
 			'password' => $this->_password);
 		
-		$response = $this->BonanzaGetDataByDates($data);
-		$result = $response->BonanzaGetDataByDatesResult;
+		$response = $this->GetDataByDates($data);
+		$result = $response->GetDataByDatesResult;
 		
 		libxml_clear_errors();
 		$xml = simplexml_load_string($result);
@@ -114,19 +114,19 @@ class BonanzaClient extends \SoapClient {
 	}
 	
 	/**
-	 * GetEverything wraps a call to BonanzaGetDataByCategory with username and password.
+	 * doGetEverything wraps a call to BonanzaGetDataByCategory with username and password.
 	 * @return \SimpleXMLElement Representing the data of the result.
 	 */
-	public function GetEverything() {
-		//return $this->GetDataByStartdate('1753-01-01T00:00:00'); // Earliest valid dataTime - but this was too aggressive for the service.
-		return $this->GetEverythingSlowly();
+	public function doGetEverything() {
+		//return $this->doGetDataByStartdate('1753-01-01T00:00:00'); // Earliest valid dataTime - but this was too aggressive for the service.
+		return $this->doGetEverythingSlowly();
 	}
 	
 	/**
-	 * GetDataByCategory wraps a call to BonanzaGetDataByCategory with username and password.
+	 * doGetDataByCategory wraps a call to BonanzaGetDataByCategory with username and password.
 	 * @return \SimpleXMLElement Representing the data of the result.
 	 */
-	public function GetEverythingSlowly($start = '2010-01-01T00:00:00', $step = 'P1Y') {
+	public function doGetEverythingSlowly($start = '2010-01-01T00:00:00', $step = 'P1Y') {
 		$step = new \DateInterval($step);
 		
 		$today = new \DateTime();
@@ -137,7 +137,7 @@ class BonanzaClient extends \SoapClient {
 		$result = array();
 		
 		do {
-			$response = $this->GetDataByDates($limitDateBegin, $limitDateEnd);
+			$response = $this->doGetDataByDates($limitDateBegin, $limitDateEnd);
 			$limitDateBegin->add($step);
 			$limitDateEnd->add($step);
 			if($response->count() > 0) {
