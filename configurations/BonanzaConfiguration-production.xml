@@ -41,12 +41,12 @@
 				return sprintf("The ProductionId is not empty or an 11 character number, got '%s' (title: '%s' and asset-id: '%s')", trim($externalObject->ProductionId), trim($externalObject->Title), trim($externalObject->AssetId));
 			}
 			]]></chc:EmbeddedFilter>
-			<!-- chc:Filter className="BannedAssetsFilter" namespace="\CHAOS\Harvester\Bonanza\Filters" name="banned_assets">
+			<chc:Filter className="BannedAssetsFilter" namespace="\CHAOS\Harvester\Bonanza\Filters" name="banned_assets">
 				<chc:Parameter name="datafile">./banned-production-ids.csv</chc:Parameter>
-			</chc:Filter -->
-			<chc:Filter className="WhitelistedAssetsFilter" namespace="\CHAOS\Harvester\Bonanza\Filters" name="whitelisted_assets">
-				<chc:Parameter name="datafile">./whitelisted-production-ids.csv</chc:Parameter>
 			</chc:Filter>
+			<!-- chc:Filter className="WhitelistedAssetsFilter" namespace="\CHAOS\Harvester\Bonanza\Filters" name="whitelisted_assets">
+				<chc:Parameter name="datafile">./whitelisted-production-ids.csv</chc:Parameter>
+			</chc:Filter -->
 		</chc:Filters>
 		<chc:PreProcessor>production_id_corrector</chc:PreProcessor>
     	<chc:FolderId></chc:FolderId>
