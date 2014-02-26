@@ -5,9 +5,10 @@ use CHAOS\Harvester\Shadows\ObjectShadow;
 class BasicAssetObjectProcessor extends \CHAOS\Harvester\Processors\ObjectProcessor {
 	
 	protected function generateQuery($externalObject) {
-		$legacyQuery = sprintf('(DKA-Organization:"%s" AND ObjectTypeID:%u AND m00000000-0000-0000-0000-000063c30000_da_all:"%s")', 'DR', $this->_objectTypeId, strval($externalObject->AssetId));
+		//$legacyQuery = sprintf('(DKA-Organization:"%s" AND ObjectTypeID:%u AND m00000000-0000-0000-0000-000063c30000_da_all:"%s")', 'DR', $this->_objectTypeId, strval($externalObject->AssetId));
 		$newQuery = sprintf('(FolderID:%u AND ObjectTypeID:%u AND DKA-ExternalIdentifier:"%s")', $this->_folderId, $this->_objectTypeId, strval($externalObject->AssetId));
-		return sprintf("(%s OR %s)", $legacyQuery, $newQuery);
+		//return sprintf("(%s OR %s)", $legacyQuery, $newQuery);
+		return $newQuery;
 	}
 	
 	public function process(&$externalObject, &$shadow = null) {
