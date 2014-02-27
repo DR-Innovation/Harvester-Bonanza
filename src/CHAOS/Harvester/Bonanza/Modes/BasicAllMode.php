@@ -45,6 +45,6 @@ class BasicAllMode extends \CHAOS\Harvester\Modes\AllMode implements \CHAOS\Harv
 			}
 			$limitDateBegin->add($step);
 			$limitDateEnd->add($step);
-		} while($limitDateEnd < $today);
+		} while($limitDateBegin < $today);
 	}
 }
