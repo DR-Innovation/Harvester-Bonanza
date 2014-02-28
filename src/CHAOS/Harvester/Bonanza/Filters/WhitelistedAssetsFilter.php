@@ -13,6 +13,8 @@ class WhitelistedAssetsFilter extends \CHAOS\Harvester\Filters\Filter {
 			if($datafile) {
 				$datafile = file_get_contents($datafile);
 				$datafile_rows = str_getcsv($datafile, "\n");
+				var_dump($datafile_rows);
+				exit;
 				foreach($datafile_rows as $row) {
 					if(strlen($row) != 11) {
 						throw new \RuntimeException("Malformed datafile, all rows have to have exact 11 charecters (it was ".strlen($row).").");
