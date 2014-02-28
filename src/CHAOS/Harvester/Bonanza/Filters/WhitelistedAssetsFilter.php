@@ -2,7 +2,7 @@
 namespace CHAOS\Harvester\Bonanza\Filters;
 class WhitelistedAssetsFilter extends \CHAOS\Harvester\Filters\Filter {
 	
-	protected $_whitelistedProductionIDs = array();
+	protected $_whitelistedAssetIDs = array();
 
 	public function __construct($harvester, $name, $parameters = array()) {
 		parent::__construct($harvester, $name, $parameters);
@@ -13,13 +13,13 @@ class WhitelistedAssetsFilter extends \CHAOS\Harvester\Filters\Filter {
 			if($datafile) {
 				$datafile = file_get_contents($datafile);
 				$datafile_rows = str_getcsv($datafile, "\n");
-				var_dump($datafile_rows);
-				exit;
 				foreach($datafile_rows as $row) {
-					if(strlen($row) != 11) {
-						throw new \RuntimeException("Malformed datafile, all rows have to have exact 11 charecters (it was ".strlen($row).").");
+					$row = explode("\t", $row);
+					
+					if(count($row) != 4) {
+						throw new \RuntimeException("Malformed datafile.");
 					}
-					$this->_whitelistedProductionIDs[] = $row;
+					$this->_whitelistedAssetIDs[] = $row[1];
 				}
 			} else {
 				throw new \Exception("The ".__CLASS__." has to have a datafile parameter that points to a datafile.");
@@ -30,7 +30,7 @@ class WhitelistedAssetsFilter extends \CHAOS\Harvester\Filters\Filter {
 	}
 	
 	public function passes($externalObject) {
-		$productionID = strval($externalObject->ProductionId);
-		return in_array($productionID, $this->_whitelistedProductionIDs) === true;
+		$assetID = strval($externalObject->AssetId);
+		return in_array($assetID, $this->_whitelistedAssetIDs) === true;
 	}
 }
