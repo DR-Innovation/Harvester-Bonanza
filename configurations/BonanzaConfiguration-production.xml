@@ -44,9 +44,6 @@
 			<!-- chc:Filter className="BannedAssetsFilter" namespace="\CHAOS\Harvester\Bonanza\Filters" name="banned_assets">
 				<chc:Parameter name="datafile">./banned-production-ids.csv</chc:Parameter>
 			</chc:Filter-->
-			<chc:Filter className="WhitelistedAssetsFilter" namespace="\CHAOS\Harvester\Bonanza\Filters" name="whitelisted_assets">
-				<chc:Parameter name="datafile">./whitelist.csv</chc:Parameter>
-			</chc:Filter>
 		</chc:Filters>
 		<chc:PreProcessor>production_id_corrector</chc:PreProcessor>
     	<chc:FolderId></chc:FolderId>
@@ -61,6 +58,9 @@
 				return "The UNPUBLISH_EVERYTHING is enabled.";
 			}
 			]]></chc:EmbeddedFilter>
+			<chc:Filter className="WhitelistedAssetsFilter" namespace="\CHAOS\Harvester\Bonanza\Filters" name="whitelisted_assets">
+				<chc:Parameter name="datafile">./whitelist.csv</chc:Parameter>
+			</chc:Filter>
 		</chc:Filters>
     	<chc:FolderId>444</chc:FolderId>
     	<chc:ObjectTypeId>36</chc:ObjectTypeId>
@@ -81,6 +81,9 @@
 				return "The UNPUBLISH_EVERYTHING is enabled.";
 			}
 			]]></chc:EmbeddedFilter>
+			<chc:Filter className="WhitelistedAssetsFilter" namespace="\CHAOS\Harvester\Bonanza\Filters" name="whitelisted_assets">
+				<chc:Parameter name="datafile">./whitelist.csv</chc:Parameter>
+			</chc:Filter>
 		</chc:Filters>
     	<chc:FolderId>715</chc:FolderId>
     	<chc:ObjectTypeId>36</chc:ObjectTypeId>
