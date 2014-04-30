@@ -13,13 +13,16 @@ class WhitelistedAssetsFilter extends \CHAOS\Harvester\Filters\Filter {
 			if($datafile) {
 				$datafile = file_get_contents($datafile);
 				$datafile_rows = str_getcsv($datafile, "\n");
+				array_shift($datafile_rows); // Remove the heading.
 				foreach($datafile_rows as $row) {
-					$row = explode("\t", $row);
-					
+					/* $row = explode("\t", $row);
 					if(count($row) != 4) {
 						throw new \RuntimeException("Malformed datafile.");
 					}
 					$this->_whitelistedAssetIDs[] = $row[1];
+					*/
+					$asset_id = intval($row);
+					$this->_whitelistedAssetIDs[] = $asset_id;
 				}
 			} else {
 				throw new \Exception("The ".__CLASS__." has to have a datafile parameter that points to a datafile.");
