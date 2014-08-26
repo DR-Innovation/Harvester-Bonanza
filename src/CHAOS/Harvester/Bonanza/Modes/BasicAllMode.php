@@ -37,6 +37,7 @@ class BasicAllMode extends \CHAOS\Harvester\Modes\AllMode implements \CHAOS\Harv
 					$assetShadow = null;
 					try {
 						$assetShadow = $this->_harvester->process('asset', $asset);
+						$assetShadow->commit($this->_harvester);
 					} catch(\Exception $e) {
 						$this->_harvester->registerProcessingException($e, $asset, $assetShadow);
 					}

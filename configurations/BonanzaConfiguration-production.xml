@@ -3,12 +3,13 @@
   <chc:Organisation>Danmarks Radio</chc:Organisation>
   <chc:Project>Bonanza</chc:Project>
   <chc:Description>This harvester fetches movieclips from the service behind http://www.dr.dk/Bonanza/index.htm</chc:Description>
+  <chc:Timezone>Europe/Copenhagen</chc:Timezone>
   <chc:BasePath fromEnvironment="BASEPATH" />
   <chc:IncludePaths>
-    <chc:path>abstract-harvester-base/src</chc:path>
-    <chc:path>abstract-harvester-base/lib/CHAOS-Client/src</chc:path>
-    <chc:path>abstract-harvester-base/lib/Timed-PHP/src</chc:path>
-    <chc:path>../src</chc:path>
+	<chc:path>abstract-harvester-base/src</chc:path>
+	<chc:path>abstract-harvester-base/lib/CHAOS-Client/src</chc:path>
+	<chc:path>abstract-harvester-base/lib/Timed-PHP/src</chc:path>
+	<chc:path>../src</chc:path>
   </chc:IncludePaths>
   <chc:ChaosConfiguration>
 	<chc:URL fromEnvironment="CHAOS_URL" />
@@ -16,26 +17,26 @@
 	<chc:Password fromEnvironment="CHAOS_PASSWORD" />
   </chc:ChaosConfiguration>
   <chc:ExternalClient className="LoadableBonanzaClient" name="bonanza"
-  	namespace="CHAOS\Harvester\Bonanza">
-  	<chc:Parameter name="baseURL">http://www.dr.dk/tjenester/kulturarv/dataservice.asmx</chc:Parameter>
-  	<chc:Parameter name="username" fromEnvironment="BONANZA_USERNAME" />
-  	<chc:Parameter name="password" fromEnvironment="BONANZA_PASSWORD" />
+	namespace="CHAOS\Harvester\Bonanza">
+	<chc:Parameter name="baseURL">http://www.dr.dk/tjenester/kulturarv/dataservice.asmx</chc:Parameter>
+	<chc:Parameter name="username" fromEnvironment="BONANZA_USERNAME" />
+	<chc:Parameter name="password" fromEnvironment="BONANZA_PASSWORD" />
   </chc:ExternalClient>
   <chc:Modes>
-  	<chc:Mode className="BasicAllMode"
-  		namespace="CHAOS\Harvester\Bonanza\Modes" name="all" />
-  	<chc:Mode className="ByStartdateMode"
-  		namespace="CHAOS\Harvester\Bonanza\Modes" name="by-startdate" />
+	<chc:Mode className="BasicAllMode"
+		namespace="CHAOS\Harvester\Bonanza\Modes" name="all" />
+	<chc:Mode className="ByStartdateMode"
+		namespace="CHAOS\Harvester\Bonanza\Modes" name="by-startdate" />
   </chc:Modes>
   <chc:Processors>
-    <chc:PreProcessor name="production_id_corrector" className="ProductionIDPreProcessor"
-    	namespace="\CHAOS\Harvester\Bonanza\Processors">
-    	<chc:Parameter name="datafile">./production-id-corrections.csv</chc:Parameter>
-    </chc:PreProcessor>
-    <chc:ObjectProcessor className="BasicAssetObjectProcessor"
-    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset">
+	<chc:PreProcessor name="production_id_corrector" className="ProductionIDPreProcessor"
+		namespace="\CHAOS\Harvester\Bonanza\Processors">
+		<chc:Parameter name="datafile">./production-id-corrections.csv</chc:Parameter>
+	</chc:PreProcessor>
+	<chc:ObjectProcessor className="BasicAssetObjectProcessor"
+		namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset">
 		<chc:Filters>
-			<chc:EmbeddedFilter language="PHP"><![CDATA[
+			<chc:EmbeddedFilter language="PHP" name="production-id-length"><![CDATA[
 			$productionIdLength = strlen(trim($externalObject->ProductionId));
 			if($productionIdLength !== 0 && $productionIdLength !== 11) {
 				return sprintf("The ProductionId is not empty or an 11 character number, got '%s' (title: '%s' and asset-id: '%s')", trim($externalObject->ProductionId), trim($externalObject->Title), trim($externalObject->AssetId));
@@ -46,13 +47,13 @@
 			</chc:Filter-->
 		</chc:Filters>
 		<chc:PreProcessor>production_id_corrector</chc:PreProcessor>
-    	<chc:FolderId></chc:FolderId>
-    	<chc:ObjectTypeId></chc:ObjectTypeId>
+		<chc:FolderId></chc:FolderId>
+		<chc:ObjectTypeId></chc:ObjectTypeId>
 		<chc:PublishSettings></chc:PublishSettings>
-    </chc:ObjectProcessor>
-    <chc:ObjectProcessor className="AssetObjectProcessor"
-    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_video">
-    	<chc:Filters>
+	</chc:ObjectProcessor>
+	<chc:ObjectProcessor className="AssetObjectProcessor"
+		namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_video">
+		<chc:Filters>
 			<chc:EmbeddedFilter language="PHP" name="unpublish_everything"><![CDATA[
 			if(array_key_exists('UNPUBLISH_EVERYTHING', $_SERVER) && $_SERVER['UNPUBLISH_EVERYTHING'] == 'true') {
 				return "The UNPUBLISH_EVERYTHING is enabled.";
@@ -62,8 +63,8 @@
 				<chc:Parameter name="datafile">./whitelist.csv</chc:Parameter>
 			</chc:Filter>
 		</chc:Filters>
-    	<chc:FolderId>444</chc:FolderId>
-    	<chc:ObjectTypeId>36</chc:ObjectTypeId>
+		<chc:FolderId>444</chc:FolderId>
+		<chc:ObjectTypeId>36</chc:ObjectTypeId>
 		<chc:PublishSettings>
 			<chc:PublishAccesspoint>
 				C4C2B8DA-A980-11E1-814B-02CEA2621172
@@ -72,10 +73,10 @@
 				C4C2B8DA-A980-11E1-814B-02CEA2621172
 			</chc:UnpublishAccesspoint>
 		</chc:PublishSettings>
-    </chc:ObjectProcessor>
-    <chc:ObjectProcessor className="AssetObjectProcessor"
-    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_radio">
-    	<chc:Filters>
+	</chc:ObjectProcessor>
+	<chc:ObjectProcessor className="AssetObjectProcessor"
+		namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_radio">
+		<chc:Filters>
 			<chc:EmbeddedFilter language="PHP" name="unpublish_everything"><![CDATA[
 			if(array_key_exists('UNPUBLISH_EVERYTHING', $_SERVER) && $_SERVER['UNPUBLISH_EVERYTHING'] == 'true') {
 				return "The UNPUBLISH_EVERYTHING is enabled.";
@@ -85,8 +86,8 @@
 				<chc:Parameter name="datafile">./whitelist.csv</chc:Parameter>
 			</chc:Filter>
 		</chc:Filters>
-    	<chc:FolderId>715</chc:FolderId>
-    	<chc:ObjectTypeId>36</chc:ObjectTypeId>
+		<chc:FolderId>715</chc:FolderId>
+		<chc:ObjectTypeId>36</chc:ObjectTypeId>
 		<chc:PublishSettings>
 			<chc:PublishAccesspoint>
 				C4C2B8DA-A980-11E1-814B-02CEA2621172
@@ -95,71 +96,81 @@
 				C4C2B8DA-A980-11E1-814B-02CEA2621172
 			</chc:UnpublishAccesspoint>
 		</chc:PublishSettings>
-    </chc:ObjectProcessor>
-    <!-- chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
-    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_metadata_dka">
-      <chc:Parameter name="stylesheet">../stylesheets/DKA.xsl</chc:Parameter>
-   	  <chc:validate>false</chc:validate>
-   	  <chc:schemaGUID>00000000-0000-0000-0000-000063c30000</chc:schemaGUID>
-    </chc:MetadataProcessor-->
-    <chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
-    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_metadata_dka2">
-      <chc:Parameter name="stylesheet">../stylesheets/DKA2.xsl</chc:Parameter>
-   	  <chc:validate>true</chc:validate>
-   	  <chc:schemaGUID>5906a41b-feae-48db-bfb7-714b3e105396</chc:schemaGUID>
-   	  <chc:schemaLocation>abstract-harvester-base/schemas/DKA2.xsd</chc:schemaLocation>
-    </chc:MetadataProcessor>
-    <chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
-    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_metadata_dka_dr">
-      <chc:Parameter name="stylesheet">../stylesheets/DKA.DR.xsl</chc:Parameter>
-   	  <chc:validate>true</chc:validate>
-   	  <chc:schemaGUID>1221c2dd-3b23-4d27-97b3-ca7bf4720ecb</chc:schemaGUID>
-   	  <chc:schemaLocation>abstract-harvester-base/schemas/DKA.DR.xsd</chc:schemaLocation>
-    </chc:MetadataProcessor>
-    <chc:FileProcessor className="AssetFileProcessor"
-    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_thumb">
-      <chc:Parameter name="AssetFileType">Thumb</chc:Parameter>
-      <chc:FormatId>10</chc:FormatId>
-      <chc:Destination name="default">
-        <chc:baseURL>http://downol.dr.dk/download/</chc:baseURL>
-        <chc:id>126</chc:id>
-      </chc:Destination>
-    </chc:FileProcessor>
-    <chc:FileProcessor className="AssetFileProcessor"
-    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_high">
-      <chc:Parameter name="AssetFileType">VideoHigh</chc:Parameter>
-      <chc:FormatId>8</chc:FormatId>
-      <chc:Destination name="default">
-        <chc:baseURL>rtmp://vod-kulturarv.dr.dk/bonanza/</chc:baseURL>
-        <chc:id>125</chc:id>
-      </chc:Destination>
-    </chc:FileProcessor>
-    <chc:FileProcessor className="AssetFileProcessor"
-    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_mid">
-      <chc:Parameter name="AssetFileType">VideoMid</chc:Parameter>
-      <chc:FormatId>8</chc:FormatId>
-      <chc:Destination name="default">
-        <chc:baseURL>rtmp://vod-kulturarv.dr.dk/bonanza/</chc:baseURL>
-        <chc:id>125</chc:id>
-      </chc:Destination>
-    </chc:FileProcessor>
-    <chc:FileProcessor className="AssetFileProcessor"
-    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_low">
-      <chc:Parameter name="AssetFileType">VideoLow</chc:Parameter>
-      <chc:FormatId>8</chc:FormatId>
-      <chc:Destination name="default">
-        <chc:baseURL>rtmp://vod-kulturarv.dr.dk/bonanza/</chc:baseURL>
-        <chc:id>125</chc:id>
-      </chc:Destination>
-    </chc:FileProcessor>
-    <chc:FileProcessor className="AssetFileProcessor"
-    	namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_audio">
-      <chc:Parameter name="AssetFileType">Audio</chc:Parameter>
-      <chc:FormatId>23</chc:FormatId>
-      <chc:Destination name="default">
-        <chc:baseURL>http://downol.dr.dk/download/</chc:baseURL>
-        <chc:id>126</chc:id>
-      </chc:Destination>
-    </chc:FileProcessor>
+	</chc:ObjectProcessor>
+	<chc:ObjectProcessor className="PassThroughObjectProcessor"
+		namespace="\CHAOS\Harvester\Processors" name="unpublished-by-curator-processor">
+		<chc:Filters>
+			<chc:Filter className="UnpublishedByCuratorFilter" namespace="\CHAOS\Harvester\DKA\Filters" name="unpublished-by-curator">
+			</chc:Filter>
+		</chc:Filters>
+		<chc:FolderId></chc:FolderId>
+		<chc:ObjectTypeId></chc:ObjectTypeId>
+		<chc:PublishSettings></chc:PublishSettings>
+	</chc:ObjectProcessor>
+	<!-- chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
+		namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_metadata_dka">
+	  <chc:Parameter name="stylesheet">../stylesheets/DKA.xsl</chc:Parameter>
+	  <chc:validate>false</chc:validate>
+	  <chc:schemaGUID>00000000-0000-0000-0000-000063c30000</chc:schemaGUID>
+	</chc:MetadataProcessor-->
+	<chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
+		namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_metadata_dka2">
+	  <chc:Parameter name="stylesheet">../stylesheets/DKA2.xsl</chc:Parameter>
+	  <chc:validate>true</chc:validate>
+	  <chc:schemaGUID>5906a41b-feae-48db-bfb7-714b3e105396</chc:schemaGUID>
+	  <chc:schemaLocation>abstract-harvester-base/schemas/DKA2.xsd</chc:schemaLocation>
+	</chc:MetadataProcessor>
+	<chc:MetadataProcessor className="AssetXSLTMetadataProcessor"
+		namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_metadata_dka_dr">
+	  <chc:Parameter name="stylesheet">../stylesheets/DKA.DR.xsl</chc:Parameter>
+	  <chc:validate>true</chc:validate>
+	  <chc:schemaGUID>1221c2dd-3b23-4d27-97b3-ca7bf4720ecb</chc:schemaGUID>
+	  <chc:schemaLocation>abstract-harvester-base/schemas/DKA.DR.xsd</chc:schemaLocation>
+	</chc:MetadataProcessor>
+	<chc:FileProcessor className="AssetFileProcessor"
+		namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_thumb">
+	  <chc:Parameter name="AssetFileType">Thumb</chc:Parameter>
+	  <chc:FormatId>10</chc:FormatId>
+	  <chc:Destination name="default">
+		<chc:baseURL>http://downol.dr.dk/download/</chc:baseURL>
+		<chc:id>126</chc:id>
+	  </chc:Destination>
+	</chc:FileProcessor>
+	<chc:FileProcessor className="AssetFileProcessor"
+		namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_high">
+	  <chc:Parameter name="AssetFileType">VideoHigh</chc:Parameter>
+	  <chc:FormatId>8</chc:FormatId>
+	  <chc:Destination name="default">
+		<chc:baseURL>rtmp://vod-kulturarv.dr.dk/bonanza/</chc:baseURL>
+		<chc:id>125</chc:id>
+	  </chc:Destination>
+	</chc:FileProcessor>
+	<chc:FileProcessor className="AssetFileProcessor"
+		namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_mid">
+	  <chc:Parameter name="AssetFileType">VideoMid</chc:Parameter>
+	  <chc:FormatId>8</chc:FormatId>
+	  <chc:Destination name="default">
+		<chc:baseURL>rtmp://vod-kulturarv.dr.dk/bonanza/</chc:baseURL>
+		<chc:id>125</chc:id>
+	  </chc:Destination>
+	</chc:FileProcessor>
+	<chc:FileProcessor className="AssetFileProcessor"
+		namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_video_low">
+	  <chc:Parameter name="AssetFileType">VideoLow</chc:Parameter>
+	  <chc:FormatId>8</chc:FormatId>
+	  <chc:Destination name="default">
+		<chc:baseURL>rtmp://vod-kulturarv.dr.dk/bonanza/</chc:baseURL>
+		<chc:id>125</chc:id>
+	  </chc:Destination>
+	</chc:FileProcessor>
+	<chc:FileProcessor className="AssetFileProcessor"
+		namespace="\CHAOS\Harvester\Bonanza\Processors" name="asset_file_audio">
+	  <chc:Parameter name="AssetFileType">Audio</chc:Parameter>
+	  <chc:FormatId>23</chc:FormatId>
+	  <chc:Destination name="default">
+		<chc:baseURL>http://downol.dr.dk/download/</chc:baseURL>
+		<chc:id>126</chc:id>
+	  </chc:Destination>
+	</chc:FileProcessor>
   </chc:Processors>
 </chc:ChaosHarvesterConfiguration>

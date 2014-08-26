@@ -27,6 +27,7 @@ class ByStartdateMode extends \CHAOS\Harvester\Modes\SetByReferenceMode implemen
 			$assetShadow = null;
 			try {
 				$assetShadow = $this->_harvester->process('asset', $asset);
+				$assetShadow->commit($this->_harvester);
 			} catch(\Exception $e) {
 				$this->_harvester->registerProcessingException($e, $asset, $assetShadow);
 			}

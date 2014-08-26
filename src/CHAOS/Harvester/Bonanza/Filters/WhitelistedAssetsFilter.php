@@ -32,7 +32,7 @@ class WhitelistedAssetsFilter extends \CHAOS\Harvester\Filters\Filter {
 		}
 	}
 	
-	public function passes($externalObject) {
+	public function passes($externalObject, $objectShadow) {
 		$assetID = strval($externalObject->AssetId);
 		return in_array($assetID, $this->_whitelistedAssetIDs) === true;
 	}

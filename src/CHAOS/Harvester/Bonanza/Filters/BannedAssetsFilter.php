@@ -27,7 +27,7 @@ class BannedAssetsFilter extends \CHAOS\Harvester\Filters\Filter {
 		}
 	}
 	
-	public function passes($externalObject) {
+	public function passes($externalObject, $objectShadow) {
 		$productionID = strval($externalObject->ProductionId);
 		return in_array($productionID, $this->_bannedProductionIDs) === false;
 	}

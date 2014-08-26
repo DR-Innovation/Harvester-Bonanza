@@ -9,8 +9,13 @@ class AssetObjectProcessor extends BasicAssetObjectProcessor {
 
 		$shadow->extras["AssetId"] = strval($externalObject->AssetId);
 		$shadow = $this->initializeShadow($externalObject, $shadow);
+
+		$this->_harvester->process('unpublished-by-curator-processor', $externalObject, $shadow);
 		
-		//var_dump($externalObject);
+		// If the unpublished by curator filter was failing ..
+		if($shadow->skipped) {
+			return $shadow;
+		}
 		
 		//$this->_harvester->process('asset_metadata_dka', $externalObject, $shadow);
 		$this->_harvester->process('asset_metadata_dka2', $externalObject, $shadow);

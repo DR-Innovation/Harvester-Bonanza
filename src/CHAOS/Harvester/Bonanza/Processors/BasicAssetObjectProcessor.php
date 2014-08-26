@@ -13,7 +13,6 @@ class BasicAssetObjectProcessor extends \CHAOS\Harvester\Processors\ObjectProces
 	
 	public function process(&$externalObject, &$shadow = null) {
 		/* @var $externalObject \SimpleXMLElement */
-		
 		$this->_harvester->info("Processing '%s' #%d", $externalObject->Title, $externalObject->AssetId);
 		
 		$shadow = new ObjectShadow();
@@ -24,8 +23,6 @@ class BasicAssetObjectProcessor extends \CHAOS\Harvester\Processors\ObjectProces
 		} else {
 			throw new \RuntimeException(sprintf("Incountered an unknown AssetType '%s'.", strval($externalObject->AssetType)));
 		}
-		
-		$shadow->commit($this->_harvester);
 		
 		return $shadow;
 	}
