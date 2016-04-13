@@ -29,7 +29,7 @@ class AssetXSLTMetadataProcessor extends XSLTMetadataProcessor {
 	
 	public static function xslt_subject_to_tags ($tags) {
 		// Let's make tags all-lowercase.
-		$tags = strtolower($tags);
+		$tags = mb_strtolower($tags, 'UTF-8');
 		return XSLTMetadataProcessor::preg_explode_to_xml($tags, self::SUBJECT_PATTERN, 'Tags', 'Tag', 'http://www.danskkulturarv.dk/DKA2.xsd', true, true);
 	}
 	
