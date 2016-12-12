@@ -43,6 +43,8 @@ class BasicAllMode extends \CHAOS\Harvester\Modes\AllMode implements \CHAOS\Harv
 					}
 					print("\n");
 				}
+			} else { 
+				printf("Found no Bonanza Assets in %s.\n", $limitDateBegin->format('F Y'));
 			}
 			$limitDateBegin->add($step);
 			$limitDateEnd->add($step);
