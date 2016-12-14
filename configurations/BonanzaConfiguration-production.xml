@@ -18,7 +18,7 @@
   </chc:ChaosConfiguration>
   <chc:ExternalClient className="LoadableBonanzaClient" name="bonanza"
 	namespace="CHAOS\Harvester\Bonanza">
-	<chc:Parameter name="baseURL">http://www.dr.dk/tjenester/kulturarv/dataservice.asmx</chc:Parameter>
+	<chc:Parameter name="baseURL">https://www.dr.dk/tjenester/kulturarv/dataservice.asmx</chc:Parameter>
 	<chc:Parameter name="username" fromEnvironment="BONANZA_USERNAME" />
 	<chc:Parameter name="password" fromEnvironment="BONANZA_PASSWORD" />
   </chc:ExternalClient>
